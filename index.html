@@ -3,325 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FARIEX STORE - Top Up Diamond & Jual Beli Akun FF & ML</title>
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>FARIEX STORE - Top Up Diamond FF & ML Terpercaya</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%);
+            color: #f8fafc;
             min-height: 100vh;
-            padding-bottom: 50px;
         }
-
-        header {
-            background: rgba(15, 12, 41, 0.9);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid #ff4757;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.25);
         }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: #ff4757;
-            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
-        }
-
-        .logo span {
-            color: #ffa502;
-        }
-
-        .nav-contact a {
-            background: #25d366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        }
-
-        .nav-contact a:hover {
-            transform: scale(1.05);
-            background: #20ba5a;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 50px 20px;
-            background: radial-gradient(circle, rgba(48,43,99,0.8) 0%, rgba(15,12,41,1) 100%);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #ffa502;
-            text-shadow: 0 0 15px rgba(255, 165, 2, 0.4);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #dcdde1;
-            max-width: 600px;
-            margin: 0 auto 20px auto;
-        }
-
-        .badge-discount {
-            background: #ff4757;
-            color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 700;
-            display: inline-block;
-            box-shadow: 0 0 10px rgba(255, 71, 87, 0.6);
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            border-left: 5px solid #ffa502;
-            padding-left: 15px;
-            color: #fff;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
+        .card-hover:hover {
             transform: translateY(-5px);
-            border-color: #ffa502;
-            box-shadow: 0 10px 25px rgba(255, 165, 2, 0.2);
+            transition: all 0.3s ease;
         }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: #fff;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .price-tag {
-            font-size: 1.3rem;
-            color: #ffa502;
-            font-weight: 700;
-            margin: 15px 0;
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
         }
-
-        .old-price {
-            font-size: 0.9rem;
-            color: #a4b0be;
-            text-decoration: line-through;
-            margin-right: 8px;
-        }
-
-        .btn {
-            background: linear-gradient(45deg, #ff4757, #ff6b81);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background: linear-gradient(45deg, #ff6b81, #ff4757);
-            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.5);
-            transform: scale(1.02);
-        }
-
-        /* Banner Info Akun & Pembayaran */
-        .info-section {
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            border: 1px dashed rgba(255, 255, 255, 0.2);
-            margin-top: 40px;
-        }
-
-        .info-section h2 {
-            color: #ffa502;
-            margin-bottom: 15px;
-        }
-
-        .info-section p {
-            color: #dfe4ea;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .payment-methods {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .pay-badge {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.15);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            color: #a4b0be;
-            font-size: 0.9rem;
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 4px;
         }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- Header -->
-    <header>
-        <div class="logo">FARIEX <span>STORE</span></div>
-        <div class="nav-contact">
-            <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20mau%20tanya-tanya%20tentang%20top%20up%20dan%20akun." target="_blank">
-                <i class="fab fa-whatsapp"></i> Hubungi Kami
-            </a>
+    <!-- HEADER / NAVBAR -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-900/80 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-gamepad text-white text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">FARIEX STORE</span>
+                    <span class="block text-[10px] text-slate-400 tracking-widest font-semibold uppercase">Official Top Up Center</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#home" class="hover:text-indigo-400 transition">Beranda</a>
+                <a href="#freefire" class="hover:text-indigo-400 transition">Free Fire</a>
+                <a href="#mobilelegends" class="hover:text-indigo-400 transition">Mobile Legends</a>
+                <a href="#akun" class="hover:text-indigo-400 transition">Jual Akun</a>
+                <a href="#kontak" class="hover:text-indigo-400 transition">Kontak</a>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <div id="status-badge" class="px-3 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="status-text">Buka (08:00 - 23:00)</span>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <span class="badge-discount"><i class="fas fa-tags"></i> DISKON SPESIAL MINGGU INI!</span>
-        <h1>SELAMAT DATANG DI FARIEX STORE</h1>
-        <p>Pusat Top Up Diamond Free Fire & Mobile Legends, Membership Bulanan, Mingguan (WDP), serta Jual Beli Akun Terpercaya.</p>
+    <!-- HERO SECTION -->
+    <section id="home" class="relative pt-12 pb-20 overflow-hidden">
+        <!-- Background Ornaments -->
+        <div class="absolute top-1/4 left-10 w-72 h-72 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto space-y-6">
+                <span class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-indigo-500/10 border border-indigo-500/30 text-indigo-300">
+                    <i class="fa-solid fa-bolt text-yellow-400"></i>
+                    <span>Proses Cepat, Aman & Bergaransi Resmi</span>
+                </span>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+                    Top Up Game Termurah & <span class="bg-gradient-to-r from-indigo-400 to-pink-500 bg-clip-text text-transparent">Paling Diskon!</span>
+                </h1>
+                <p class="text-slate-300 text-base sm:text-lg">
+                    Solusi terpercaya top up Diamond Free Fire, Mobile Legends, Membership, WDP, serta Jual Beli Akun Game berkualitas tinggi di FARIEX STORE.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <a href="#freefire" class="px-8 py-3.5 rounded-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-lg shadow-indigo-600/30 transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-fire mr-2"></i> Top Up Free Fire
+                    </a>
+                    <a href="#mobilelegends" class="px-8 py-3.5 rounded-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white shadow-lg shadow-purple-600/30 transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-shield-halved mr-2"></i> Top Up Mobile Legends
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <div class="container">
-        
-        <!-- Free Fire Section -->
-        <h2 class="section-title"><i class="fab fa-free-fire-context"></i> Free Fire (FF) - Diskon & Member</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Weekly Diamond Pass (WDP)</h3>
-                <p>Aman, Cepat, dan Proses Otomatis</p>
-                <div class="price-tag"><span class="old-price">Rp 33.000</span> Rp 29.000</div>
-                <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20mau%20beli%20Weekly%20Diamond%20Pass%20FF" target="_blank" class="btn">Beli Sekarang</a>
+    <!-- SECTION FREE FIRE -->
+    <section id="freefire" class="py-16 bg-slate-900/50 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-10">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold flex items-center space-x-3">
+                        <span class="w-3 h-8 bg-orange-500 rounded-full inline-block"></span>
+                        <span>Free Fire Diamond & Membership</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Pilih nominal diamond atau membership bulanan/mingguan andalanmu.</p>
+                </div>
+                <span class="hidden sm:inline-block px-3 py-1 rounded-lg bg-orange-500/10 text-orange-400 text-xs font-semibold border border-orange-500/20">
+                    <i class="fa-solid fa-tag mr-1"></i> Diskon Spesial Aktif
+                </span>
             </div>
-            <div class="card">
-                <h3>140 Diamonds FF</h3>
-                <p>Diskon Spesial Member Baru</p>
-                <div class="price-tag"><span class="old-price">Rp 22.000</span> Rp 19.500</div>
-                <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20mau%20beli%20140%20Diamond%20FF" target="_blank" class="btn">Beli Sekarang</a>
-            </div>
-            <div class="card">
-                <h3>355 Diamonds FF</h3>
-                <p>Bonus Ekstra Diamond</p>
-                <div class="price-tag"><span class="old-price">Rp 55.000</span> Rp 48.000</div>
-                <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20mau%20beli%20355%20Diamond%20FF" target="_blank" class="btn">Beli Sekarang</a>
+
+            <!-- Grid Diamond FF -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Item FF 1 -->
+                <div onclick="openCheckout('Free Fire', '50 Diamond', 'Rp 7.500')" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">-10%</div>
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-4 text-orange-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">50 Diamond</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 7.500</span>
+                        <span class="text-slate-500 text-xs line-through">Rp 8.500</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
+
+                <!-- Item FF 2 -->
+                <div onclick="openCheckout('Free Fire', '140 Diamond', 'Rp 19.500')" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">-15%</div>
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-4 text-orange-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">140 Diamond</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 19.500</span>
+                        <span class="text-slate-500 text-xs line-through">Rp 23.000</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
+
+                <!-- Item FF 3 -->
+                <div onclick="openCheckout('Free Fire', '355 Diamond', 'Rp 47.500')" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">-15%</div>
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-4 text-orange-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">355 Diamond</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 47.500</span>
+                        <span class="text-slate-500 text-xs line-through">Rp 55.000</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
+
+                <!-- Item FF 4 -->
+                <div onclick="openCheckout('Free Fire', '720 Diamond', 'Rp 94.000')" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">-20%</div>
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-4 text-orange-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">720 Diamond</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 94.000</span>
+                        <span class="text-slate-500 text-xs line-through">Rp 115.000</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
+
+                <!-- Membership Mingguan FF -->
+                <div onclick="openCheckout('Free Fire', 'Membership Mingguan', 'Rp 29.000')" class="bg-slate-800/80 border border-orange-500/40 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-amber-500 text-slate-950 font-extrabold text-[10px] px-2 py-0.5 rounded-full">POPULER</div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 text-amber-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Membership Mingguan</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 29.000</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
+
+                <!-- Membership Bulanan FF -->
+                <div onclick="openCheckout('Free Fire', 'Membership Bulanan', 'Rp 275.000')" class="bg-slate-800/80 border border-orange-500/40 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-amber-500 text-slate-950 font-extrabold text-[10px] px-2 py-0.5 rounded-full">BEST VALUE</div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 text-amber-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Membership Bulanan</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 275.000</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Mobile Legends Section -->
-        <h2 class="section-title"><i class="fas fa-shield-alt"></i> Mobile Legends (ML) - Diamond & Starlight</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Weekly Diamond Pass (WDP) ML</h3>
-                <p>Hemat & Dapat Hadiah Harian</p>
-                <div class="price-tag"><span class="old-price">Rp 32.000</span> Rp 28.000</div>
-                <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20mau%20beli%20WDP%20Mobile%20Legends" target="_blank" class="btn">Beli Sekarang</a>
+    <!-- SECTION MOBILE LEGENDS -->
+    <section id="mobilelegends" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-10">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold flex items-center space-x-3">
+                        <span class="w-3 h-8 bg-blue-500 rounded-full inline-block"></span>
+                        <span>Mobile Legends Diamond & WDP</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Top up diamond ML & Weekly Diamond Pass (WDP) resmi dan kilat.</p>
+                </div>
+                <span class="hidden sm:inline-block px-3 py-1 rounded-lg bg-blue-500/10 text-blue-400 text-xs font-semibold border border-blue-500/20">
+                    <i class="fa-solid fa-tag mr-1"></i> Diskon Spesial Aktif
+                </span>
             </div>
-            <div class="card">
-                <h3>86 Diamonds ML</h3>
-                <p>Masuk Instan via ID & Server</p>
-                <div class="price-tag"><span class="old-price">Rp 25.000</span> Rp 22.000</div>
-                <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20mau%20beli%2086%20Diamond%20ML" target="_blank" class="btn">Beli Sekarang</a>
-            </div>
-            <div class="card">
-                <h3>Starlight Member ML</h3>
-                <p>Skin Eksklusif Bulanan</p>
-                <div class="price-tag"><span class="old-price">Rp 150.000</span> Rp 135.000</div>
-                <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20mau%20beli%20Starlight%20Member%20ML" target="_blank" class="btn">Beli Sekarang</a>
+
+            <!-- Grid Diamond ML -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Item ML 1 -->
+                <div onclick="openCheckout('Mobile Legends', '86 Diamond', 'Rp 20.000')" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">-10%</div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 text-blue-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">86 Diamond</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 20.000</span>
+                        <span class="text-slate-500 text-xs line-through">Rp 22.500</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
+
+                <!-- Item ML 2 -->
+                <div onclick="openCheckout('Mobile Legends', '172 Diamond', 'Rp 40.000')" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">-12%</div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 text-blue-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">172 Diamond</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 40.000</span>
+                        <span class="text-slate-500 text-xs line-through">Rp 45.000</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
+
+                <!-- Item ML 3 -->
+                <div onclick="openCheckout('Mobile Legends', '257 Diamond', 'Rp 59.000')" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">-15%</div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 text-blue-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">257 Diamond</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 59.000</span>
+                        <span class="text-slate-500 text-xs line-through">Rp 69.000</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
+
+                <!-- Item ML 4 -->
+                <div onclick="openCheckout('Mobile Legends', '514 Diamond', 'Rp 118.000')" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">-18%</div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 text-blue-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">514 Diamond</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 118.000</span>
+                        <span class="text-slate-500 text-xs line-through">Rp 140.000</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
+
+                <!-- Weekly Diamond Pass (WDP) ML -->
+                <div onclick="openCheckout('Mobile Legends', 'Weekly Diamond Pass (WDP)', 'Rp 28.000')" class="bg-slate-800/80 border border-blue-500/40 rounded-2xl p-4 sm:p-5 cursor-pointer card-hover relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 bg-cyan-500 text-slate-950 font-extrabold text-[10px] px-2 py-0.5 rounded-full">FAVORIT</div>
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4 text-cyan-400 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-ticket"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Weekly Diamond Pass (WDP)</h3>
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span class="text-indigo-400 font-extrabold text-lg">Rp 28.000</span>
+                    </div>
+                    <button class="w-full mt-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-xs font-semibold transition text-white">Beli Sekarang</button>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Info Jual Beli Akun & Pembayaran -->
-        <div class="info-section">
-            <h2><i class="fas fa-store"></i> Mau Cari / Beli Akun FF & ML?</h2>
-            <p>Untuk stok akun Free Fire dan Mobile Legends yang tersedia, sengaja tidak ditampilkan di web agar Anda bisa request langsung sesuai budget, skin, atau level impian Anda. Langsung hubungi kami untuk tanya-tanya akun!</p>
-            <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20mau%20tanya-tanya%20soal%20jual%20beli%20akun%20FF/ML" target="_blank" class="btn" style="max-width: 300px; margin: 0 auto; display: block; background: linear-gradient(45deg, #25d366, #128c7e);">
-                <i class="fab fa-whatsapp"></i> Chat WhatsApp (0878-7949-1224)
-            </a>
-
-            <h3 style="margin-top: 30px; margin-bottom: 15px; color: #fff; font-size: 1.2rem;">Metode Pembayaran Tersedia (Lengkap):</h3>
-            <div class="payment-methods">
-                <div class="pay-badge">QRIS / All E-Wallet</div>
-                <div class="pay-badge">DANA</div>
-                <div class="pay-badge">OVO</div>
-                <div class="pay-badge">GOPAY</div>
-                <div class="pay-badge">Transfer Bank (BCA/BRI/Mandiri)</div>
-                <div class="pay-badge">Indomaret / Alfamart</div>
+    <!-- SECTION JUAL AKUN FF & ML -->
+    <section id="akun" class="py-16 bg-slate-900/60 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gradient-to-r from-indigo-900/40 via-purple-900/40 to-slate-900/40 border border-indigo-500/30 rounded-3xl p-8 sm:p-12 glow-effect">
+                <div class="w-16 h-16 bg-indigo-600/20 border border-indigo-500/40 rounded-2xl flex items-center justify-center mx-auto mb-6 text-indigo-400 text-3xl">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h2 class="text-3xl font-black mb-4">Cari / Beli Akun Free Fire & Mobile Legends?</h2>
+                <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8">
+                    Kami menyediakan akun Free Fire dan Mobile Legends berkualitas tinggi, aman, dan bergaransi penuh. Ingin tanya-tanya spesifikasi, skin, atau harga akun idamanmu? Langsung hubungi admin kami!
+                </p>
+                <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20mau%20tanya-tanya%20tentang%20akun%20game%20FF%20dan%20ML." target="_blank" class="inline-flex items-center space-x-3 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base shadow-lg shadow-emerald-600/30 transition transform hover:-scale-105">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Hubungi WhatsApp: 0878-7949-1224</span>
+                </a>
             </div>
         </div>
+    </section>
 
-    </div>
-
-    <footer>
-        <p>&copy; 2026 FARIEX STORE. All Rights Reserved. Layanan Top Up & Akun Gaming Terpercaya.</p>
+    <!-- FOOTER -->
+    <footer id="kontak" class="py-12 bg-slate-950 border-t border-slate-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+                <span class="text-xl font-black bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">FARIEX STORE</span>
+                <p class="text-slate-400 text-xs mt-1">Layanan Top Up & Akun Game Terpercaya di Indonesia.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-4 text-slate-400 text-xs">
+                <span><i class="fa-solid fa-clock text-indigo-400 mr-1"></i> Jam Operasional: 08:00 - 23:00 WIB</span>
+                <span><i class="fa-solid fa-phone text-indigo-400 mr-1"></i> CS WhatsApp: 087879491224</span>
+            </div>
+            <div class="text-slate-500 text-xs">
+                &copy; 2026 FARIEX STORE. All rights reserved.
+            </div>
+        </div>
     </footer>
 
+    <!-- CHECKOUT MODAL -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-md w-full p-6 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeCheckout()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <h3 class="text-xl font-bold mb-1" id="modalTitle">Konfirmasi Pembelian</h3>
+            <p class="text-xs text-slate-400 mb-6">Silakan lengkapi data akun Anda untuk melanjutkan pembayaran.</p>
+
+            <form id="checkoutForm" onsubmit="submitCheckout(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Item Dipilih</label>
+                    <input type="text" id="modalItem" readonly class="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-indigo-400 font-bold text-sm focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">ID Game</label>
+                        <input type="text" required placeholder="Masukkan ID" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Server / Zona</label>
+                        <input type="text" required placeholder="Cth: 1234" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Metode Pembayaran</label>
+                    <select class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500">
+                        <option>QRIS (Semua E-Wallet & Bank)</option>
+                        <option>DANA</option>
+                        <option>OVO</option>
+                        <option>GOPAY</option>
+                        <option>Transfer Bank BCA</option>
+                        <option>Transfer Bank BRI</option>
+                        <option>Indomaret / Alfamart</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Total Harga</label>
+                    <input type="text" id="modalPrice" readonly class="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-emerald-400 font-extrabold text-base focus:outline-none">
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-sm shadow-lg shadow-indigo-600/30 transition">
+                    Checkout Sekarang
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SUCCESS NOTIFICATION MODAL -->
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-sm w-full p-6 text-center space-y-4">
+            <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-emerald-400 text-3xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-xl font-bold">Checkout Berhasil!</h3>
+            <p class="text-xs text-slate-300">Pesanan Anda sedang diproses. Silakan lakukan pembayaran sesuai metode yang dipilih.</p>
+            <button onclick="closeSuccess()" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition">OK / Tutup</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Cek Jam Operasional Otomatis (08:00 - 23:00)
+        function checkOperatingHours() {
+            const now = new Date();
+            const hours = now.getHours();
+            const badge = document.getElementById('status-badge');
+            const text = document.getElementById('status-text');
+
+            if (hours >= 8 && hours < 23) {
+                badge.className = "px-3 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400";
+                text.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Buka (08:00 - 23:00)';
+            } else {
+                badge.className = "px-3 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-2 bg-rose-500/10 border border-rose-500/30 text-rose-400";
+                text.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Tutup (Buka Jam 08:00)';
+            }
+        }
+        checkOperatingHours();
+
+        // Modal Checkout Handlers
+        function openCheckout(game, item, price) {
+            document.getElementById('modalTitle').innerText = `Checkout ${game}`;
+            document.getElementById('modalItem').value = item;
+            document.getElementById('modalPrice').value = price;
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function submitCheckout(e) {
+            e.preventDefault();
+            document.getElementById('checkoutModal').classList.add('hidden');
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeSuccess() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.getElementById('checkoutForm').reset();
+        }
+    </script>
 </body>
 </html>
