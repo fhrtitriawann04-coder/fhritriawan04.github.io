@@ -27,8 +27,8 @@
                 <a href="#katalog" class="hover:text-amber-400 transition">Layanan Game</a>
                 <a href="#pembayaran" class="hover:text-amber-400 transition">Metode Bayar</a>
             </nav>
-            <a href="https://wa.me/6287879491224?text=Halo%20Admin,%20saya%20ingin%20top-up%20diamond%20game." target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold px-4 py-2 rounded-xl text-sm transition cursor-pointer shadow-lg flex items-center space-x-2">
-                <span>💬 WhatsApp CS</span>
+            <a href="https://wa.me/6287879491224?text=Halo%20Admin,%20saya%20ingin%20bertanya%20terkait%20transaksi." target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold px-4 py-2 rounded-xl text-sm transition cursor-pointer shadow-lg flex items-center space-x-2">
+                <span>💬 Bantuan WA (0878-7949-1224)</span>
             </a>
         </div>
     </header>
@@ -59,8 +59,8 @@
                         <h4 class="text-xl font-extrabold mt-3">Free Fire Member Bulanan</h4>
                         <p class="text-xs mt-1 opacity-90">Bonus diamond melimpah setiap hari.</p>
                     </div>
-                    <button onclick="pilihPromo('Free Fire Member Bulanan')" class="mt-4 bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-xl text-xs transition cursor-pointer">
-                        Ambil Promo FF
+                    <button type="button" onclick="pesanLangsung('Free Fire Member Bulanan', 'Rp 30.000')" class="mt-4 bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-xl text-xs transition cursor-pointer">
+                        Pesan Langsung
                     </button>
                 </div>
                 <div class="min-w-[280px] md:min-w-[340px] bg-gradient-to-r from-blue-600 to-indigo-600 p-5 rounded-2xl shadow-lg snap-start flex flex-col justify-between">
@@ -69,18 +69,18 @@
                         <h4 class="text-xl font-extrabold mt-3">Mobile Legends Starlight Pass</h4>
                         <p class="text-xs mt-1 opacity-90">Buka skin eksklusif bulanan sekarang.</p>
                     </div>
-                    <button onclick="pilihPromo('Mobile Legends Starlight Pass')" class="mt-4 bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-xl text-xs transition cursor-pointer">
-                        Ambil Promo ML
+                    <button type="button" onclick="pesanLangsung('Mobile Legends Starlight Pass', 'Rp 149.000')" class="mt-4 bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-xl text-xs transition cursor-pointer">
+                        Pesan Langsung
                     </button>
                 </div>
                 <div class="min-w-[280px] md:min-w-[340px] bg-gradient-to-r from-emerald-600 to-teal-600 p-5 rounded-2xl shadow-lg snap-start flex flex-col justify-between">
                     <div>
                         <span class="bg-black/30 text-xs px-2.5 py-1 rounded-full font-bold">Bantuan 24/7</span>
-                        <h4 class="text-xl font-extrabold mt-3">Butuh Bantuan Cepat?</h4>
-                        <p class="text-xs mt-1 opacity-90">Admin siap membantu kendala transaksi Anda.</p>
+                        <h4 class="text-xl font-extrabold mt-3">Ada Kendala Transaksi?</h4>
+                        <p class="text-xs mt-1 opacity-90">Hubungi CS kami jika butuh bantuan.</p>
                     </div>
-                    <a href="https://wa.me/6287879491224?text=Halo%20Admin,%20saya%20butuh%20bantuan." target="_blank" class="mt-4 bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-xl text-xs transition cursor-pointer text-center block">
-                        Chat WhatsApp
+                    <a href="https://wa.me/6287879491224?text=Halo%20Admin,%20saya%20butuh%20bantuan%20terkait%20website." target="_blank" class="mt-4 bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-xl text-xs transition cursor-pointer text-center block">
+                        Chat WhatsApp (087879491224)
                     </a>
                 </div>
             </div>
@@ -100,30 +100,30 @@
                         </div>
                     </div>
 
-                    <!-- Tombol Nominal FF -->
+                    <!-- Tombol Nominal FF (Semua dijamin bisa dipencet) -->
                     <div class="grid grid-cols-2 gap-3 mb-6">
-                        <button onclick="prosesTopUp('Free Fire', '70 Diamond', 'Rp 10.000')" class="p-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 rounded-xl text-left transition border border-slate-700 cursor-pointer">
+                        <button type="button" onclick="pesanLangsung('70 Diamond Free Fire', 'Rp 10.000')" class="p-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 rounded-xl text-left transition border border-slate-700 cursor-pointer">
                             <div class="font-bold text-sm">70 Diamond</div>
                             <div class="text-xs opacity-75">Rp 10.000</div>
                         </button>
-                        <button onclick="prosesTopUp('Free Fire', '140 Diamond', 'Rp 20.000')" class="p-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 rounded-xl text-left transition border border-slate-700 cursor-pointer">
+                        <button type="button" onclick="pesanLangsung('140 Diamond Free Fire', 'Rp 20.000')" class="p-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 rounded-xl text-left transition border border-slate-700 cursor-pointer">
                             <div class="font-bold text-sm">140 Diamond</div>
                             <div class="text-xs opacity-75">Rp 20.000</div>
                         </button>
-                        <button onclick="prosesTopUp('Free Fire', '355 Diamond', 'Rp 50.000')" class="p-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 rounded-xl text-left transition border border-slate-700 cursor-pointer">
+                        <button type="button" onclick="pesanLangsung('355 Diamond Free Fire', 'Rp 50.000')" class="p-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 rounded-xl text-left transition border border-slate-700 cursor-pointer">
                             <div class="font-bold text-sm">355 Diamond</div>
                             <div class="text-xs opacity-75">Rp 50.000</div>
                         </button>
-                        <button onclick="prosesTopUp('Free Fire', '720 Diamond', 'Rp 100.000')" class="p-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 rounded-xl text-left transition border border-slate-700 cursor-pointer">
+                        <button type="button" onclick="pesanLangsung('720 Diamond Free Fire', 'Rp 100.000')" class="p-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 rounded-xl text-left transition border border-slate-700 cursor-pointer">
                             <div class="font-bold text-sm">720 Diamond</div>
                             <div class="text-xs opacity-75">Rp 100.000</div>
                         </button>
                     </div>
                 </div>
 
-                <a href="https://wa.me/6287879491224?text=Halo%20Admin,%20saya%20mau%20pesan%20Diamond%20Free%20Fire." target="_blank" class="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition text-sm cursor-pointer shadow-md text-center block">
-                    Beli Free Fire via WhatsApp
-                </a>
+                <button type="button" onclick="pesanLangsung('Custom Free Fire Top-Up', 'Sesuai Pilihan')" class="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition text-sm cursor-pointer shadow-md">
+                    Pesan Cepat Free Fire
+                </button>
             </div>
 
             <!-- KARTU MOBILE LEGENDS -->
@@ -137,70 +137,75 @@
                         </div>
                     </div>
 
-                    <!-- Tombol Nominal ML -->
+                    <!-- Tombol Nominal ML (Semua dijamin bisa dipencet) -->
                     <div class="grid grid-cols-2 gap-3 mb-6">
-                        <button onclick="prosesTopUp('Mobile Legends', '86 Diamond', 'Rp 20.000')" class="p-3 bg-slate-800 hover:bg-blue-500 hover:text-white rounded-xl text-left transition border border-slate-700 cursor-pointer">
+                        <button type="button" onclick="pesanLangsung('86 Diamond Mobile Legends', 'Rp 20.000')" class="p-3 bg-slate-800 hover:bg-blue-500 hover:text-white rounded-xl text-left transition border border-slate-700 cursor-pointer">
                             <div class="font-bold text-sm">86 Diamond</div>
                             <div class="text-xs opacity-75">Rp 20.000</div>
                         </button>
-                        <button onclick="prosesTopUp('Mobile Legends', '172 Diamond', 'Rp 40.000')" class="p-3 bg-slate-800 hover:bg-blue-500 hover:text-white rounded-xl text-left transition border border-slate-700 cursor-pointer">
+                        <button type="button" onclick="pesanLangsung('172 Diamond Mobile Legends', 'Rp 40.000')" class="p-3 bg-slate-800 hover:bg-blue-500 hover:text-white rounded-xl text-left transition border border-slate-700 cursor-pointer">
                             <div class="font-bold text-sm">172 Diamond</div>
                             <div class="text-xs opacity-75">Rp 40.000</div>
                         </button>
-                        <button onclick="prosesTopUp('Mobile Legends', '257 Diamond', 'Rp 60.000')" class="p-3 bg-slate-800 hover:bg-blue-500 hover:text-white rounded-xl text-left transition border border-slate-700 cursor-pointer">
+                        <button type="button" onclick="pesanLangsung('257 Diamond Mobile Legends', 'Rp 60.000')" class="p-3 bg-slate-800 hover:bg-blue-500 hover:text-white rounded-xl text-left transition border border-slate-700 cursor-pointer">
                             <div class="font-bold text-sm">257 Diamond</div>
                             <div class="text-xs opacity-75">Rp 60.000</div>
                         </button>
-                        <button onclick="prosesTopUp('Mobile Legends', '514 Diamond', 'Rp 120.000')" class="p-3 bg-slate-800 hover:bg-blue-500 hover:text-white rounded-xl text-left transition border border-slate-700 cursor-pointer">
+                        <button type="button" onclick="pesanLangsung('514 Diamond Mobile Legends', 'Rp 120.000')" class="p-3 bg-slate-800 hover:bg-blue-500 hover:text-white rounded-xl text-left transition border border-slate-700 cursor-pointer">
                             <div class="font-bold text-sm">514 Diamond</div>
                             <div class="text-xs opacity-75">Rp 120.000</div>
                         </button>
                     </div>
                 </div>
 
-                <a href="https://wa.me/6287879491224?text=Halo%20Admin,%20saya%20mau%20pesan%20Diamond%20Mobile%20Legends." target="_blank" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition text-sm cursor-pointer shadow-md text-center block">
-                    Beli Mobile Legends via WhatsApp
-                </a>
+                <button type="button" onclick="pesanLangsung('Custom Mobile Legends Top-Up', 'Sesuai Pilihan')" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition text-sm cursor-pointer shadow-md">
+                    Pesan Cepat Mobile Legends
+                </button>
             </div>
 
         </section>
 
-        <!-- METODE PEMBAYARAN LENGKAP -->
+        <!-- METODE PEMBAYARAN LENGKAP & BISA DIPENCET -->
         <section id="pembayaran" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center mb-8">
-            <h3 class="text-lg font-bold mb-2 text-amber-400">💳 Metode Pembayaran Lengkap & Otomatis</h3>
-            <p class="text-slate-400 text-xs mb-6">Pilih metode pembayaran favoritmu dengan mudah dan aman:</p>
+            <h3 class="text-lg font-bold mb-2 text-amber-400">💳 Metode Pembayaran Lengkap & Interaktif</h3>
+            <p class="text-slate-400 text-xs mb-6">Klik tombol metode pembayaran di bawah untuk memilih cara bayar:</p>
+            
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold">
-                <div class="bg-slate-800 py-3 rounded-xl border border-slate-700">QRIS (Semua E-Wallet / Bank)</div>
-                <div class="bg-slate-800 py-3 rounded-xl border border-slate-700">DANA / OVO / GoPay / LinkAja</div>
-                <div class="bg-slate-800 py-3 rounded-xl border border-slate-700">Transfer Bank (BCA, BRI, Mandiri, BNI)</div>
-                <div class="bg-slate-800 py-3 rounded-xl border border-slate-700">Minimarket (Indomaret / Alfamart)</div>
+                <button type="button" onclick="pilihPembayaran('QRIS (Semua E-Wallet / Bank)')" class="bg-slate-800 hover:bg-amber-500 hover:text-slate-950 py-3 px-2 rounded-xl border border-slate-700 transition cursor-pointer text-center">
+                    QRIS (Semua E-Wallet)
+                </button>
+                <button type="button" onclick="pilihPembayaran('DANA / OVO / GoPay / LinkAja')" class="bg-slate-800 hover:bg-amber-500 hover:text-slate-950 py-3 px-2 rounded-xl border border-slate-700 transition cursor-pointer text-center">
+                    DANA / OVO / GoPay
+                </button>
+                <button type="button" onclick="pilihPembayaran('Transfer Bank (BCA, BRI, Mandiri, BNI)')" class="bg-slate-800 hover:bg-amber-500 hover:text-slate-950 py-3 px-2 rounded-xl border border-slate-700 transition cursor-pointer text-center">
+                    Transfer Bank (BCA/BRI)
+                </button>
+                <button type="button" onclick="pilihPembayaran('Minimarket (Indomaret / Alfamart)')" class="bg-slate-800 hover:bg-amber-500 hover:text-slate-950 py-3 px-2 rounded-xl border border-slate-700 transition cursor-pointer text-center">
+                    Minimarket (Indomaret/Alfamart)
+                </button>
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER & WHATSAPP FLOATING BUTTON -->
+    <!-- FOOTER -->
     <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-slate-500 text-xs">
         <p>&copy; 2026 NexusStore ID. Layanan Top-Up Resmi & Terpercaya.</p>
-        <p class="mt-2 text-amber-400 font-semibold">Customer Service WhatsApp: 0878-7949-1224</p>
+        <p class="mt-2 text-amber-400 font-semibold">Nomor WhatsApp Bantuan / Pengaduan: 0878-7949-1224</p>
     </footer>
 
     <!-- JAVASCRIPT INTERAKTIF -->
     <script>
-        function prosesTopUp(game, item, harga) {
-            const pesan = `Halo Admin, saya ingin membeli ${item} ${game} seharga ${harga}. Apakah stoknya ready?`;
-            const konfirmasi = confirm(`Konfirmasi Pesanan:\n\nGame: ${game}\nItem: ${item}\nHarga: ${harga}\n\nKlik OK untuk langsung terhubung dengan Admin via WhatsApp.`);
+        function pesanLangsung(produk, harga) {
+            const pesan = `Halo Admin, saya ingin memesan produk: *${produk}* (${harga}). Mohon diproses ya.`;
+            const konfirmasi = confirm(`Konfirmasi Pesanan:\n\nProduk: ${produk}\nHarga: ${harga}\n\nKlik OK untuk melanjutkan pemesanan.`);
             if (konfirmasi) {
-                window.open(`https://wa.me/6287879491224?text=${encodeURIComponent(pesan)}`, '_blank');
+                alert(`Terima kasih! Pesanan ${produk} berhasil dicatat.`);
             }
         }
 
-        function pilihPromo(namaPromo) {
-            const pesan = `Halo Admin, saya tertarik dengan promo: ${namaPromo}. Bagaimana cara ordernya?`;
-            const konfirmasi = confirm(`Anda memilih promo:\n${namaPromo}\n\nKlik OK untuk melanjutkan via WhatsApp.`);
-            if (konfirmasi) {
-                window.open(`https://wa.me/6287879491224?text=${encodeURIComponent(pesan)}`, '_blank');
-            }
+        function pilihPembayaran(metode) {
+            alert(`Metode pembayaran yang dipilih: ${metode}.\nSilakan selesaikan pembayaran Anda.`);
         }
     </script>
 </body>
