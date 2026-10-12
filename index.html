@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaliexStore - Top-Up Diamond FF & ML Terpercaya</title>
+    <title>NexusStore ID - Top-Up Diamond FF & ML Terpercaya</title>
     <!-- Tailwind CSS untuk tampilan modern, rapi, dan responsif -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Poppins', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-slate-950 text-white min-h-screen flex flex-col justify-between">
@@ -18,16 +20,16 @@
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <span class="text-2xl">⚡</span>
-                <h1 class="text-xl font-extrabold tracking-wider text-amber-400">ZURASTORE</h1>
+                <h1 class="text-xl font-extrabold tracking-wider text-amber-400">NEXUSSTORE ID</h1>
             </div>
             <nav class="hidden md:flex space-x-6 text-sm font-medium">
                 <a href="#beranda" class="hover:text-amber-400 transition">Beranda</a>
-                <a href="#produk" class="hover:text-amber-400 transition">Daftar Harga</a>
-                <a href="#cara-order" class="hover:text-amber-400 transition">Cara Order</a>
+                <a href="#katalog" class="hover:text-amber-400 transition">Layanan Game</a>
+                <a href="#pembayaran" class="hover:text-amber-400 transition">Metode Bayar</a>
             </nav>
-            <button onclick="alert('Silakan pilih produk diamond di bawah halaman ini ya!')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-xl text-sm transition cursor-pointer shadow-lg">
-                Beli Cepat
-            </button>
+            <a href="https://wa.me/6287879491224?text=Halo%20Admin,%20saya%20ingin%20top-up%20diamond%20game." target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold px-4 py-2 rounded-xl text-sm transition cursor-pointer shadow-lg flex items-center space-x-2">
+                <span>💬 WhatsApp CS</span>
+            </a>
         </div>
     </header>
 
@@ -35,30 +37,70 @@
     <main id="beranda" class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow">
         
         <!-- Hero Section -->
-        <div class="text-center mb-10">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
-                Top-Up Diamond FF & ML Aman & Cepat
+        <div class="text-center mb-8">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
+                Top-Up Diamond Free Fire & Mobile Legends Kilat
             </h2>
             <p class="text-slate-400 max-w-xl mx-auto text-sm md:text-base">
-                Proses instan 24 jam otomatis. Harga bersahabat menggunakan Rupiah untuk seluruh gamers Indonesia!
+                Proses otomatis 24 jam, aman, terpercaya, dan menggunakan mata uang Rupiah!
             </p>
         </div>
 
-        <!-- Bagian Pilihan Produk -->
-        <div id="produk" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <!-- FITUR GESER (SLIDER) PROMO -->
+        <section class="mb-10">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-slate-200">🔥 Promo Spesial (Geser Kanan/Kiri)</h3>
+                <span class="text-xs text-amber-400">Geser &rarr;</span>
+            </div>
+            <div class="flex space-x-4 overflow-x-auto no-scrollbar pb-2 snap-x">
+                <div class="min-w-[280px] md:min-w-[340px] bg-gradient-to-r from-orange-600 to-amber-600 p-5 rounded-2xl shadow-lg snap-start flex flex-col justify-between">
+                    <div>
+                        <span class="bg-black/30 text-xs px-2.5 py-1 rounded-full font-bold">Diskon 15%</span>
+                        <h4 class="text-xl font-extrabold mt-3">Free Fire Member Bulanan</h4>
+                        <p class="text-xs mt-1 opacity-90">Bonus diamond melimpah setiap hari.</p>
+                    </div>
+                    <button onclick="pilihPromo('Free Fire Member Bulanan')" class="mt-4 bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-xl text-xs transition cursor-pointer">
+                        Ambil Promo FF
+                    </button>
+                </div>
+                <div class="min-w-[280px] md:min-w-[340px] bg-gradient-to-r from-blue-600 to-indigo-600 p-5 rounded-2xl shadow-lg snap-start flex flex-col justify-between">
+                    <div>
+                        <span class="bg-black/30 text-xs px-2.5 py-1 rounded-full font-bold">Hot Item</span>
+                        <h4 class="text-xl font-extrabold mt-3">Mobile Legends Starlight Pass</h4>
+                        <p class="text-xs mt-1 opacity-90">Buka skin eksklusif bulanan sekarang.</p>
+                    </div>
+                    <button onclick="pilihPromo('Mobile Legends Starlight Pass')" class="mt-4 bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-xl text-xs transition cursor-pointer">
+                        Ambil Promo ML
+                    </button>
+                </div>
+                <div class="min-w-[280px] md:min-w-[340px] bg-gradient-to-r from-emerald-600 to-teal-600 p-5 rounded-2xl shadow-lg snap-start flex flex-col justify-between">
+                    <div>
+                        <span class="bg-black/30 text-xs px-2.5 py-1 rounded-full font-bold">Bantuan 24/7</span>
+                        <h4 class="text-xl font-extrabold mt-3">Butuh Bantuan Cepat?</h4>
+                        <p class="text-xs mt-1 opacity-90">Admin siap membantu kendala transaksi Anda.</p>
+                    </div>
+                    <a href="https://wa.me/6287879491224?text=Halo%20Admin,%20saya%20butuh%20bantuan." target="_blank" class="mt-4 bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-xl text-xs transition cursor-pointer text-center block">
+                        Chat WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- KATALOG PRODUK (FF & ML) -->
+        <section id="katalog" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             
-            <!-- KARTU FREE FIRE (FF) -->
+            <!-- KARTU FREE FIRE -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between hover:border-amber-500/60 transition">
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
                         <div class="bg-amber-500/10 p-3 rounded-xl text-amber-400 text-2xl font-bold">🔥</div>
                         <div>
                             <h3 class="text-xl font-bold text-amber-400">Free Fire (FF)</h3>
-                            <p class="text-xs text-slate-400">Pilih nominal diamond kesukaanmu</p>
+                            <p class="text-xs text-slate-400">Pilih nominal diamond resmi</p>
                         </div>
                     </div>
 
-                    <!-- Tombol Pilihan Nominal FF -->
+                    <!-- Tombol Nominal FF -->
                     <div class="grid grid-cols-2 gap-3 mb-6">
                         <button onclick="prosesTopUp('Free Fire', '70 Diamond', 'Rp 10.000')" class="p-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 rounded-xl text-left transition border border-slate-700 cursor-pointer">
                             <div class="font-bold text-sm">70 Diamond</div>
@@ -79,23 +121,23 @@
                     </div>
                 </div>
 
-                <button onclick="alert('Silakan klik salah satu kotak nominal Free Fire di atas terlebih dahulu untuk melakukan pembelian.')" class="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition text-sm cursor-pointer shadow-md">
-                    Beli Free Fire Sekarang
-                </button>
+                <a href="https://wa.me/6287879491224?text=Halo%20Admin,%20saya%20mau%20pesan%20Diamond%20Free%20Fire." target="_blank" class="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition text-sm cursor-pointer shadow-md text-center block">
+                    Beli Free Fire via WhatsApp
+                </a>
             </div>
 
-            <!-- KARTU MOBILE LEGENDS (ML) -->
+            <!-- KARTU MOBILE LEGENDS -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between hover:border-blue-500/60 transition">
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
                         <div class="bg-blue-500/10 p-3 rounded-xl text-blue-400 text-2xl font-bold">⚔️</div>
                         <div>
                             <h3 class="text-xl font-bold text-blue-400">Mobile Legends (ML)</h3>
-                            <p class="text-xs text-slate-400">Pilih nominal diamond kesukaanmu</p>
+                            <p class="text-xs text-slate-400">Pilih nominal diamond resmi</p>
                         </div>
                     </div>
 
-                    <!-- Tombol Pilihan Nominal ML -->
+                    <!-- Tombol Nominal ML -->
                     <div class="grid grid-cols-2 gap-3 mb-6">
                         <button onclick="prosesTopUp('Mobile Legends', '86 Diamond', 'Rp 20.000')" class="p-3 bg-slate-800 hover:bg-blue-500 hover:text-white rounded-xl text-left transition border border-slate-700 cursor-pointer">
                             <div class="font-bold text-sm">86 Diamond</div>
@@ -116,26 +158,48 @@
                     </div>
                 </div>
 
-                <button onclick="alert('Silakan klik salah satu kotak nominal Mobile Legends di atas terlebih dahulu untuk melakukan pembelian.')" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition text-sm cursor-pointer shadow-md">
-                    Beli Mobile Legends Sekarang
-                </button>
+                <a href="https://wa.me/6287879491224?text=Halo%20Admin,%20saya%20mau%20pesan%20Diamond%20Mobile%20Legends." target="_blank" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition text-sm cursor-pointer shadow-md text-center block">
+                    Beli Mobile Legends via WhatsApp
+                </a>
             </div>
 
-        </div>
+        </section>
+
+        <!-- METODE PEMBAYARAN LENGKAP -->
+        <section id="pembayaran" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center mb-8">
+            <h3 class="text-lg font-bold mb-2 text-amber-400">💳 Metode Pembayaran Lengkap & Otomatis</h3>
+            <p class="text-slate-400 text-xs mb-6">Pilih metode pembayaran favoritmu dengan mudah dan aman:</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold">
+                <div class="bg-slate-800 py-3 rounded-xl border border-slate-700">QRIS (Semua E-Wallet / Bank)</div>
+                <div class="bg-slate-800 py-3 rounded-xl border border-slate-700">DANA / OVO / GoPay / LinkAja</div>
+                <div class="bg-slate-800 py-3 rounded-xl border border-slate-700">Transfer Bank (BCA, BRI, Mandiri, BNI)</div>
+                <div class="bg-slate-800 py-3 rounded-xl border border-slate-700">Minimarket (Indomaret / Alfamart)</div>
+            </div>
+        </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer id="cara-order" class="bg-slate-900 border-t border-slate-800 py-6 text-center text-slate-500 text-xs">
-        <p>&copy; 2026 ZuraStore Indonesia. Semua Hak Dilindungi Undang-Undang.</p>
+    <!-- FOOTER & WHATSAPP FLOATING BUTTON -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-slate-500 text-xs">
+        <p>&copy; 2026 NexusStore ID. Layanan Top-Up Resmi & Terpercaya.</p>
+        <p class="mt-2 text-amber-400 font-semibold">Customer Service WhatsApp: 0878-7949-1224</p>
     </footer>
 
-    <!-- JAVASCRIPT AGAR TOMBOL BERFUNGSI -->
+    <!-- JAVASCRIPT INTERAKTIF -->
     <script>
         function prosesTopUp(game, item, harga) {
-            const konfirmasi = confirm(`Konfirmasi Pesanan:\n\nGame: ${game}\nItem: ${item}\nHarga: ${harga}\n\nKlik OK untuk melanjutkan ke metode pembayaran.`);
+            const pesan = `Halo Admin, saya ingin membeli ${item} ${game} seharga ${harga}. Apakah stoknya ready?`;
+            const konfirmasi = confirm(`Konfirmasi Pesanan:\n\nGame: ${game}\nItem: ${item}\nHarga: ${harga}\n\nKlik OK untuk langsung terhubung dengan Admin via WhatsApp.`);
             if (konfirmasi) {
-                alert(`Terima kasih! Pesanan ${item} (${game}) berhasil dibuat.\nSilakan transfer pembayaran sebesar ${harga} melalui QRIS / Transfer Bank terdekat.`);
+                window.open(`https://wa.me/6287879491224?text=${encodeURIComponent(pesan)}`, '_blank');
+            }
+        }
+
+        function pilihPromo(namaPromo) {
+            const pesan = `Halo Admin, saya tertarik dengan promo: ${namaPromo}. Bagaimana cara ordernya?`;
+            const konfirmasi = confirm(`Anda memilih promo:\n${namaPromo}\n\nKlik OK untuk melanjutkan via WhatsApp.`);
+            if (konfirmasi) {
+                window.open(`https://wa.me/6287879491224?text=${encodeURIComponent(pesan)}`, '_blank');
             }
         }
     </script>
