@@ -1,732 +1,288 @@
 <!DOCTYPE html>
-<html lang="id" class="dark">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FARIEX STORE - Top Up Diamond FF & ML Terpercaya</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Undangan Ulang Tahun Spesial</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins & Great Vibes -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        gamingDark: '#0b0f19',
-                        gamingCard: '#131b2e',
-                        gamingBorder: '#1e293b',
-                        neonPurple: '#a855f7',
-                        neonBlue: '#3b82f6',
-                        neonGold: '#eab308'
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        great: ['Great Vibes', 'cursive']
                     }
                 }
             }
         }
     </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts Inter & Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0b0f19;
-            color: #f8fafc;
+            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
-        h1, h2, h3, h4, .font-heading {
-            font-family: 'Poppins', sans-serif;
-        }
-        .gaming-bg {
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
-                linear-gradient(to bottom, #0b0f19, #0f172a);
-        }
-        .gaming-grid {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        }
-        .glass-card {
-            background: rgba(19, 27, 46, 0.75);
+        .glass {
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
-        ::-webkit-scrollbar {
-            width: 8px;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
         }
-        ::-webkit-scrollbar-track {
-            background: #0b0f19;
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 6s linear infinite;
         }
     </style>
 </head>
-<body class="gaming-bg gaming-grid min-h-screen flex flex-col justify-between selection:bg-purple-500 selection:text-white">
+<body class="bg-gradient-to-br from-pink-100 via-purple-100 to-indigo-100 text-gray-800 min-h-screen relative">
 
-    <!-- Navbar -->
-    <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/30 group-hover:scale-105 transition-transform duration-300">
-                    <i class="fa-solid fa-gamepad text-white text-xl"></i>
-                </div>
-                <div>
-                    <span class="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-purple-400 via-indigo-300 to-blue-400 bg-clip-text text-transparent font-heading">FARIEX STORE</span>
-                    <span class="block text-[10px] text-slate-400 tracking-widest font-semibold uppercase">Top Up & Akun Gaming</span>
-                </div>
-            </a>
+    <!-- Music Player Floating Button -->
+    <div id="music-control" onclick="toggleMusic()" class="fixed bottom-5 right-5 z-40 bg-pink-600 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-transform transform hover:scale-110 active:scale-95 border-2 border-white">
+        <i id="music-icon" class="fa-solid fa-music text-lg"></i>
+    </div>
 
-            <div class="hidden md:flex items-center gap-6">
-                <div id="store-status-badge" class="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span id="status-text">Buka (08:00 - 23:00)</span>
-                </div>
+    <!-- 1. Halaman Pembuka / Cover -->
+    <section id="cover-section" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-tr from-pink-500 via-purple-500 to-indigo-600 text-white p-6 text-center transition-all duration-700">
+        <div class="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
+            <div class="absolute top-10 left-10 text-4xl animate-float">🎈</div>
+            <div class="absolute bottom-20 right-16 text-4xl animate-float" style="animation-delay: 1s;">🎉</div>
+            <div class="absolute top-1/3 right-10 text-3xl animate-float" style="animation-delay: 2s;">✨</div>
+            <div class="absolute bottom-1/4 left-16 text-3xl animate-float" style="animation-delay: 1.5s;">🍰</div>
+        </div>
 
-                <nav class="flex items-center gap-5 text-sm font-medium text-slate-300">
-                    <a href="#home" class="hover:text-purple-400 transition-colors">Beranda</a>
-                    <a href="#freefire" class="hover:text-purple-400 transition-colors">Free Fire</a>
-                    <a href="#mobilelegends" class="hover:text-blue-400 transition-colors">Mobile Legends</a>
-                    <a href="#akun" class="hover:text-amber-400 transition-colors">Jual Akun</a>
-                </nav>
+        <div class="relative z-10 max-w-md w-full glass p-8 rounded-3xl shadow-2xl text-gray-800 border border-white/50">
+            <span class="text-xs font-semibold uppercase tracking-widest text-pink-600 bg-pink-100 px-3 py-1 rounded-full">Undangan Spesial</span>
+            <h1 class="font-great text-5xl md:text-6xl text-pink-600 mt-3 mb-1">You're Invited!</h1>
+            <p class="text-gray-600 text-xs mb-5">Merayakan Hari Bahagia Ulang Tahun</p>
 
-                <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20ingin%20tanya-tanya." target="_blank" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm flex items-center gap-2 transition-all shadow-lg shadow-emerald-600/20">
-                    <i class="fa-brands fa-whatsapp text-lg"></i> CS WhatsApp
-                </a>
+            <!-- Editable Name on Cover -->
+            <div class="mb-5">
+                <input type="text" id="cover-name" value="Keisha Aurelia" class="w-full text-center font-bold text-2xl text-gray-800 bg-transparent border-b-2 border-pink-400 focus:outline-none focus:border-pink-600 pb-1" placeholder="Nama yang ulang tahun">
+                <span class="text-[10px] text-gray-400 mt-1 block">💡 (Nama bisa diketik & diubah langsung)</span>
             </div>
 
-            <div class="flex items-center md:hidden gap-3">
-                <button id="mobile-menu-btn" class="p-2.5 rounded-xl bg-slate-800/80 text-slate-300 hover:text-white focus:outline-none">
-                    <i class="fa-solid fa-bars text-lg"></i>
+            <!-- Cover Photo with Uploader & Cake Illustration Fallback -->
+            <div class="relative w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden shadow-lg border-4 border-white group bg-pink-100 flex items-center justify-center">
+                <img id="cover-photo-preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Birthday Person" class="w-full h-full object-cover">
+                <label for="cover-file-input" class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-white text-xs font-medium p-2">
+                    <i class="fa-solid fa-camera text-lg mb-1"></i> Ganti Foto
+                </label>
+                <input type="file" id="cover-file-input" accept="image/*" class="hidden" onchange="updateCoverPhoto(event)">
+            </div>
+            
+            <div class="flex justify-center gap-2 mb-5">
+                <button onclick="resetToCakeIllustration()" class="text-[11px] bg-purple-100 hover:bg-purple-200 text-purple-700 px-3 py-1 rounded-full font-medium transition-all flex items-center gap-1">
+                    <i class="fa-solid fa-cake-candles"></i> Pakai Ilustrasi Kue
+                </button>
+            </div>
+
+            <p class="text-gray-600 text-xs mb-5 italic">"Sebuah kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir."</p>
+
+            <button onclick="openInvitation()" class="w-full py-3 px-6 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold rounded-full shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <div id="main-content" class="hidden opacity-0 transition-opacity duration-1000 max-w-2xl mx-auto px-4 py-8 space-y-10">
+
+        <!-- 2. Profil yang Berulang Tahun -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl text-center relative overflow-hidden border border-white/60">
+            <div class="absolute -top-10 -right-10 text-pink-200 text-9xl opacity-30 font-great pointer-events-none">Birthday</div>
+            
+            <div class="relative w-36 h-36 mx-auto mb-3 rounded-full overflow-hidden shadow-2xl border-4 border-pink-300 group bg-pink-100 flex items-center justify-center">
+                <img id="profile-photo-preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Profile" class="w-full h-full object-cover">
+                <label for="profile-file-input" class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-white text-xs font-semibold p-2">
+                    <i class="fa-solid fa-camera text-xl mb-1"></i> Ganti Foto Galeri
+                </label>
+                <input type="file" id="profile-file-input" accept="image/*" class="hidden" onchange="updateProfilePhoto(event)">
+            </div>
+            <span class="text-xs text-gray-500 block mb-3">✨ (Klik foto di atas untuk ganti dari galeri HP Anda)</span>
+
+            <div class="inline-block bg-pink-100 text-pink-600 px-4 py-1 rounded-full text-sm font-semibold mb-3">
+                Ulang Tahun ke-<span contenteditable="true" id="profile-age" class="outline-none border-b border-pink-400">17</span>
+            </div>
+
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+                <input type="text" id="profile-name" value="Keisha Aurelia Putri" class="w-full text-center bg-transparent font-bold border-b border-dashed border-gray-300 focus:border-pink-500 focus:outline-none">
+            </h2>
+
+            <div class="mt-4 bg-pink-50 p-4 rounded-2xl border border-pink-200">
+                <p class="text-gray-700 italic text-sm" contenteditable="true" id="profile-greeting">
+                    "Terima kasih atas segala doa dan kasih sayang di hari spesialku. Semoga kebahagiaan senantiasa menyertai kita semua!"
+                </p>
+                <span class="text-[10px] text-pink-400 mt-2 block">💡 (Pesan ucapan di atas bisa diklik dan diedit langsung)</span>
+            </div>
+        </section>
+
+        <!-- 5. Countdown Ulang Tahun -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl text-center border border-white/60">
+            <h3 class="text-lg font-bold text-gray-800 mb-1 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-clock text-pink-500"></i> Menuju Hari H
+            </h3>
+            <p class="text-xs text-gray-500 mb-5">Hitung mundur waktu perayaan acara ulang tahun</p>
+
+            <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-md mx-auto">
+                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
+                    <span id="days" class="text-2xl md:text-3xl font-bold block">00</span>
+                    <span class="text-[10px] uppercase tracking-wider">Hari</span>
+                </div>
+                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
+                    <span id="hours" class="text-2xl md:text-3xl font-bold block">00</span>
+                    <span class="text-[10px] uppercase tracking-wider">Jam</span>
+                </div>
+                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
+                    <span id="minutes" class="text-2xl md:text-3xl font-bold block">00</span>
+                    <span class="text-[10px] uppercase tracking-wider">Menit</span>
+                </div>
+                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
+                    <span id="seconds" class="text-2xl md:text-3xl font-bold block">00</span>
+                    <span class="text-[10px] uppercase tracking-wider">Detik</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Detail Acara -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
+            <div class="text-center mb-6">
+                <span class="text-xs font-semibold text-purple-600 uppercase tracking-widest bg-purple-100 px-3 py-1 rounded-full">Save The Date</span>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">Detail Acara Perayaan</h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-white/80 p-4 rounded-2xl shadow-sm border border-pink-100 flex items-start gap-3">
+                    <div class="bg-pink-100 text-pink-600 w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Hari & Tanggal</h4>
+                        <input type="text" id="event-date" value="Sabtu, 25 Juli 2026" class="font-bold text-gray-800 text-sm md:text-base w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-pink-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="bg-white/80 p-4 rounded-2xl shadow-sm border border-pink-100 flex items-start gap-3">
+                    <div class="bg-purple-100 text-purple-600 w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Waktu / Jam</h4>
+                        <input type="text" id="event-time" value="16.00 WIB - Selesai" class="font-bold text-gray-800 text-sm md:text-base w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-purple-500 focus:outline-none">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/80 p-5 rounded-2xl shadow-sm border border-pink-100 text-center">
+                <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-lg mx-auto mb-2">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <h4 class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Lokasi Acara</h4>
+                <input type="text" id="event-location-name" value="Grand Cafe & Resto, Jl. Melati Indah No. 12, Jakarta" class="font-bold text-gray-800 text-sm md:text-base w-full text-center bg-transparent border-b border-transparent hover:border-gray-300 focus:border-indigo-500 focus:outline-none mb-3">
+                
+                <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="maps-url" value="https://maps.google.com" class="text-xs bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 flex-grow focus:outline-none focus:border-indigo-500" placeholder="Masukkan Link Google Maps">
+                    <a id="maps-btn" href="https://maps.google.com" target="_blank" class="py-2.5 px-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white text-xs font-medium rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-map-location-dot"></i> Buka Maps
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Galeri Foto (Cleaned initial state, ready for custom uploads) -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
+            <div class="text-center mb-6">
+                <span class="text-xs font-semibold text-pink-600 uppercase tracking-widest bg-pink-100 px-3 py-1 rounded-full">Momen Indah</span>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">Galeri Foto</h3>
+                <p class="text-xs text-gray-500 mt-1">Unggah dan tambahkan foto kenangan dari galeri perangkat Anda</p>
+            </div>
+
+            <div class="mb-6 text-center">
+                <label for="gallery-file-input" class="inline-flex items-center gap-2 px-5 py-3 bg-pink-500 hover:bg-pink-600 text-white text-sm font-medium rounded-full shadow-md cursor-pointer transition-all">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Tambah Foto dari Galeri HP
+                </label>
+                <input type="file" id="gallery-file-input" accept="image/*" multiple class="hidden" onchange="addGalleryPhotos(event)">
+            </div>
+
+            <!-- Dynamic Gallery Grid -->
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Foto-foto yang diunggah akan muncul secara otomatis di sini -->
+            </div>
+            <p id="gallery-empty-text" class="text-center text-xs text-gray-400 italic py-6">Belum ada foto yang diunggah. Silakan klik tombol di atas untuk menambah foto dari galeri Anda.</p>
+        </section>
+
+        <!-- Lightbox Modal for Gallery -->
+        <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/80 hidden items-center justify-center p-4" onclick="closeLightbox()">
+            <div class="relative max-w-3xl w-full max-h-[90vh] flex items-center justify-center">
+                <img id="lightbox-img" src="" alt="Zoomed Photo" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl object-contain">
+                <button class="absolute top-2 right-2 text-white bg-black/50 hover:bg-black w-10 h-10 rounded-full flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-slate-800 px-4 pt-3 pb-5 space-y-3">
-            <div class="flex items-center justify-between px-2 py-1 text-xs font-semibold text-emerald-400 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
-                <span>Status Toko:</span>
-                <span id="mobile-status-text">Buka (08:00 - 23:00)</span>
+        <!-- 6. RSVP / Konfirmasi Kehadiran -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
+            <div class="text-center mb-6">
+                <span class="text-xs font-semibold text-purple-600 uppercase tracking-widest bg-purple-100 px-3 py-1 rounded-full">RSVP</span>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">Konfirmasi Kehadiran</h3>
+                <p class="text-xs text-gray-500 mt-1">Mohon konfirmasi kehadiran Anda untuk kelancaran acara</p>
             </div>
-            <a href="#home" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Beranda</a>
-            <a href="#freefire" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Free Fire</a>
-            <a href="#mobilelegends" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Mobile Legends</a>
-            <a href="#akun" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Jual Akun FF & ML</a>
-            <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store" target="_blank" class="w-full py-2.5 bg-emerald-600 text-white rounded-xl text-center font-semibold block shadow-md">Hubungi WhatsApp CS</a>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-16">
-
-        <!-- Hero Section -->
-        <section id="home" class="relative rounded-3xl overflow-hidden glass-card p-6 sm:p-10 lg:p-12 border border-purple-500/25 shadow-2xl">
-            <div class="absolute -right-20 -top-20 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
-            
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-purple-500/10 border border-purple-500/30 text-purple-300">
-                        <i class="fa-solid fa-bolt text-amber-400"></i> TOP UP INSTANT & AMAN 100%
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading leading-tight">
-                        Pusat Top Up <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-300 bg-clip-text text-transparent">Diamond FF & ML</span> Terpercaya
-                    </h1>
-                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0">
-                        Nikmati harga termurah, diskon spesial setiap hari, proses cepat otomatis, dan metode pembayaran lengkap. Tersedia juga layanan pembelian akun Free Fire & Mobile Legends berkualitas!
-                    </p>
-                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
-                        <a href="#freefire" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold shadow-lg shadow-purple-600/30 transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-fire text-amber-300"></i> Top Up Free Fire
-                        </a>
-                        <a href="#mobilelegends" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-lg shadow-blue-600/30 transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-shield-halved text-amber-300"></i> Top Up Mobile Legends
-                        </a>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-                    <div class="glass-card rounded-2xl p-5 text-center border border-purple-500/20 transform hover:-translate-y-1 transition-transform">
-                        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-xl">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-base">Jam Operasional</h3>
-                        <p class="text-xs text-slate-300 mt-1">08:00 - 23:00 WIB</p>
-                    </div>
-                    <div class="glass-card rounded-2xl p-5 text-center border border-blue-500/20 transform hover:-translate-y-1 transition-transform">
-                        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-xl">
-                            <i class="fa-solid fa-tags"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-base">Diskon Spesial</h3>
-                        <p class="text-xs text-slate-300 mt-1">Hemat Setiap Hari</p>
-                    </div>
-                    <div class="glass-card rounded-2xl p-5 text-center border border-amber-500/20 transform hover:-translate-y-1 transition-transform">
-                        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-xl">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-base">Proses Cepat</h3>
-                        <p class="text-xs text-slate-300 mt-1">Masuk Instant 1-3 Menit</p>
-                    </div>
-                    <div class="glass-card rounded-2xl p-5 text-center border border-emerald-500/20 transform hover:-translate-y-1 transition-transform">
-                        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl">
-                            <i class="fa-solid fa-shield-check"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-base">100% Aman</h3>
-                        <p class="text-xs text-slate-300 mt-1">Legal & Terpercaya</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Free Fire -->
-        <section id="freefire" class="space-y-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
+            <form id="rsvp-form" onsubmit="submitRSVP(event)" class="space-y-4 max-w-md mx-auto">
                 <div>
-                    <div class="flex items-center gap-2 text-purple-400 text-sm font-semibold mb-1">
-                        <i class="fa-solid fa-fire"></i> FREE FIRE STORE
-                    </div>
-                    <h2 class="text-3xl font-extrabold font-heading text-white">Top Up Diamond & Membership Free Fire</h2>
-                </div>
-                <p class="text-slate-400 text-sm">Masukkan ID, pilih nominal berdiskon, dan checkout langsung tanpa ribet!</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <!-- Input ID FF -->
-                <div class="lg:col-span-4 space-y-6">
-                    <div class="glass-card rounded-3xl p-6 border border-purple-500/20 shadow-xl space-y-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-purple-600/20 flex items-center justify-center text-purple-400 font-bold">1</div>
-                            <h3 class="text-lg font-bold text-white font-heading">Masukkan User ID FF</h3>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-2">USER ID FREE FIRE</label>
-                            <input type="number" id="ff-userid" placeholder="Contoh: 123456789" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors">
-                        </div>
-                        <div class="p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300 space-y-1">
-                            <p class="font-semibold"><i class="fa-solid fa-circle-info"></i> Petunjuk:</p>
-                            <p>Masukkan User ID Free Fire Anda dengan benar sebelum memilih produk diamond atau membership di sebelah kanan.</p>
-                        </div>
-                    </div>
-
-                    <!-- Metode Pembayaran -->
-                    <div class="glass-card rounded-3xl p-6 border border-slate-800 shadow-xl space-y-4">
-                        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Metode Pembayaran</h4>
-                        <div class="grid grid-cols-4 gap-2.5 text-center">
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-qrcode text-purple-400 text-lg mb-1"></i> QRIS
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-wallet text-blue-400 text-lg mb-1"></i> DANA
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-wallet text-indigo-400 text-lg mb-1"></i> OVO
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-wallet text-emerald-400 text-lg mb-1"></i> GoPay
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-building-columns text-cyan-400 text-lg mb-1"></i> BCA
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-building-columns text-blue-500 text-lg mb-1"></i> Mandiri
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-store text-red-400 text-lg mb-1"></i> Alfamart
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-store text-blue-400 text-lg mb-1"></i> Indomaret
-                            </div>
-                        </div>
-                    </div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nama Tamu Undangan</label>
+                    <input type="text" id="rsvp-name" required placeholder="Masukkan nama Anda" class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500">
                 </div>
 
-                <!-- Produk FF -->
-                <div class="lg:col-span-8 space-y-6">
-                    <div class="glass-card rounded-3xl p-6 border border-purple-500/20 shadow-xl space-y-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-purple-600/20 flex items-center justify-center text-purple-400 font-bold">2</div>
-                            <h3 class="text-lg font-bold text-white font-heading">Pilih Nominal Diamond & Membership Free Fire</h3>
-                        </div>
-
-                        <!-- Diamond List FF -->
-                        <div>
-                            <h4 class="text-xs font-semibold uppercase tracking-wider text-purple-400 mb-3">Diamond Free Fire (Diskon Spesial)</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="ff-diamond-grid"></div>
-                        </div>
-
-                        <!-- Membership List FF -->
-                        <div class="pt-4 border-t border-slate-800">
-                            <h4 class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-3">Membership Free Fire (Mingguan & Bulanan)</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="ff-membership-grid"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Mobile Legends -->
-        <section id="mobilelegends" class="space-y-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
                 <div>
-                    <div class="flex items-center gap-2 text-blue-400 text-sm font-semibold mb-1">
-                        <i class="fa-solid fa-shield-halved"></i> MOBILE LEGENDS STORE
-                    </div>
-                    <h2 class="text-3xl font-extrabold font-heading text-white">Top Up Diamond & WDP Mobile Legends</h2>
-                </div>
-                <p class="text-slate-400 text-sm">Masukkan ID & Zone ID, pilih nominal berdiskon, dan checkout langsung!</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <!-- Input ID ML -->
-                <div class="lg:col-span-4 space-y-6">
-                    <div class="glass-card rounded-3xl p-6 border border-blue-500/20 shadow-xl space-y-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 font-bold">1</div>
-                            <h3 class="text-lg font-bold text-white font-heading">Masukkan ID & Zone ID ML</h3>
-                        </div>
-                        <div class="grid grid-cols-3 gap-3">
-                            <div class="col-span-2">
-                                <label class="block text-xs font-semibold text-slate-300 mb-2">USER ID ML</label>
-                                <input type="number" id="ml-userid" placeholder="Cth: 12345678" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors">
-                            </div>
-                            <div class="col-span-1">
-                                <label class="block text-xs font-semibold text-slate-300 mb-2">ZONE ID</label>
-                                <input type="number" id="ml-zoneid" placeholder="1234" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors">
-                            </div>
-                        </div>
-                        <div class="p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-xs text-blue-300 space-y-1">
-                            <p class="font-semibold"><i class="fa-solid fa-circle-info"></i> Petunjuk:</p>
-                            <p>Zone ID berada di dalam kurung setelah User ID di profil akun Mobile Legends Anda.</p>
-                        </div>
-                    </div>
-
-                    <!-- Metode Pembayaran -->
-                    <div class="glass-card rounded-3xl p-6 border border-slate-800 shadow-xl space-y-4">
-                        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Metode Pembayaran</h4>
-                        <div class="grid grid-cols-4 gap-2.5 text-center">
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-qrcode text-purple-400 text-lg mb-1"></i> QRIS
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-wallet text-blue-400 text-lg mb-1"></i> DANA
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-wallet text-indigo-400 text-lg mb-1"></i> OVO
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-wallet text-emerald-400 text-lg mb-1"></i> GoPay
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-building-columns text-cyan-400 text-lg mb-1"></i> BCA
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-building-columns text-blue-500 text-lg mb-1"></i> Mandiri
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-store text-red-400 text-lg mb-1"></i> Alfamart
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center text-xs text-slate-300">
-                                <i class="fa-solid fa-store text-blue-400 text-lg mb-1"></i> Indomaret
-                            </div>
-                        </div>
-                    </div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Status Kehadiran</label>
+                    <select id="rsvp-status" class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500">
+                        <option value="Hadir">Hadir (Datang ke Acara)</option>
+                        <option value="Tidak Hadir">Mohon Maaf, Berhalangan Hadir</option>
+                    </select>
                 </div>
 
-                <!-- Produk ML -->
-                <div class="lg:col-span-8 space-y-6">
-                    <div class="glass-card rounded-3xl p-6 border border-blue-500/20 shadow-xl space-y-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 font-bold">2</div>
-                            <h3 class="text-lg font-bold text-white font-heading">Pilih Nominal Diamond & WDP Mobile Legends</h3>
-                        </div>
-
-                        <!-- Diamond List ML -->
-                        <div>
-                            <h4 class="text-xs font-semibold uppercase tracking-wider text-blue-400 mb-3">Diamond Mobile Legends (Diskon Spesial)</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="ml-diamond-grid"></div>
-                        </div>
-
-                        <!-- WDP List ML -->
-                        <div class="pt-4 border-t border-slate-800">
-                            <h4 class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-3">Weekly Diamond Pass (WDP) Mobile Legends</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="ml-wdp-grid"></div>
-                        </div>
-                    </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Jumlah Tamu (Bebas / Tidak Terbatas)</label>
+                    <input type="number" id="rsvp-count" min="1" max="100" value="1" class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500" placeholder="Masukkan jumlah tamu">
+                    <span class="text-[10px] text-gray-400 mt-1 block">💡 Ketik jumlah tamu yang akan hadir sesuai kebutuhan Anda</span>
                 </div>
-            </div>
+
+                <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                    <button type="submit" class="flex-1 py-3 px-6 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                        <i class="fa-solid fa-floppy-disk"></i> Simpan RSVP
+                    </button>
+                    <button type="button" onclick="sendRSVPWhatsApp()" class="flex-1 py-3 px-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Kirim via WA
+                    </button>
+                </div>
+            </form>
         </section>
 
-        <!-- Section Jual Akun FF & ML -->
-        <section id="akun" class="relative rounded-3xl overflow-hidden glass-card p-6 sm:p-10 border border-amber-500/20 shadow-xl">
-            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div class="lg:col-span-8 space-y-4">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 border border-amber-500/30 text-amber-400">
-                        <i class="fa-solid fa-user-shield"></i> JUAL AKUN BERKUALITAS
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Mau Cari Akun Free Fire atau Mobile Legends Idaman?</h2>
-                    <p class="text-slate-300 text-base leading-relaxed">
-                        Fariex Store menyediakan akun Free Fire dan Mobile Legends berkualitas siap pakai. Ingin tanya-tanya spesifikasi akun, skin, atau karakter seperti apa? Langsung hubungi admin kami melalui WhatsApp di bawah ini!
-                    </p>
-                    <div class="flex flex-wrap gap-4 pt-2">
-                        <div class="flex items-center gap-2 text-sm text-slate-300">
-                            <i class="fa-solid fa-check text-emerald-400"></i> Akun Aman 100%
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-slate-300">
-                            <i class="fa-solid fa-check text-emerald-400"></i> Full Bind / Polos
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-slate-300">
-                            <i class="fa-solid fa-check text-emerald-400"></i> Bergaransi
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-900/80 border border-amber-500/30 text-center space-y-4 shadow-xl">
-                    <div class="w-16 h-16 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 text-3xl shadow-inner">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-white font-heading">Hubungi WhatsApp CS Akun</h3>
-                        <p class="text-xs text-slate-400 mt-1">Konsultasikan akun FF / ML impianmu</p>
-                    </div>
-                    <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20mau%20tanya-tanya%20akun%20game%20FF%20dan%20ML." target="_blank" class="w-full py-3 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-600/30">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> 0878-7949-1224
-                    </a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Checkout Modal / Popup -->
-    <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
-        <div class="glass-card rounded-3xl max-w-md w-full p-6 sm:p-8 border border-purple-500/30 shadow-2xl relative space-y-6 transform scale-95 transition-transform duration-300" id="modal-content">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-xl bg-slate-800/80">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-
-            <div class="text-center space-y-2">
-                <div class="w-16 h-16 mx-auto rounded-full bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 text-3xl">
-                    <i class="fa-solid fa-receipt"></i>
-                </div>
-                <h3 class="text-2xl font-bold font-heading text-white">Konfirmasi Pesanan</h3>
-                <p class="text-xs text-slate-400">Periksa detail pesanan top up Anda sebelum melanjutkan pembayaran.</p>
+        <!-- 7. Ucapan dan Doa (Guestbook - Fully dynamic & clean initial state) -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
+            <div class="text-center mb-6">
+                <span class="text-xs font-semibold text-pink-600 uppercase tracking-widest bg-pink-100 px-3 py-1 rounded-full">Ucapan & Doa</span>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">Buku Tamu Ucapan</h3>
+                <p class="text-xs text-gray-500 mt-1">Tuliskan pesan, doa, dan harapan untuk yang ulang tahun</p>
             </div>
 
-            <div class="glass-card rounded-2xl p-4 space-y-3 text-sm border border-slate-800">
-                <div class="flex justify-between">
-                    <span class="text-slate-400">Game:</span>
-                    <span id="modal-game" class="font-bold text-white">Free Fire</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-slate-400">Item Produk:</span>
-                    <span id="modal-item" class="font-bold text-purple-400">140 Diamond</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-slate-400">Tujuan ID:</span>
-                    <span id="modal-userid" class="font-bold text-white">12345678</span>
-                </div>
-                <div class="flex justify-between border-t border-slate-800 pt-3">
-                    <span class="text-slate-400 font-semibold">Total Harga:</span>
-                    <span id="modal-price" class="font-extrabold text-amber-400 text-base">Rp 19.500</span>
-                </div>
-            </div>
-
-            <div class="space-y-3">
-                <label class="block text-xs font-semibold text-slate-300">PILIH METODE PEMBAYARAN</label>
-                <select id="payment-method-select" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-purple-500">
-                    <option value="QRIS">QRIS (Semua E-Wallet & Bank - Instant)</option>
-                    <option value="DANA">DANA</option>
-                    <option value="OVO">OVO</option>
-                    <option value="GoPay">GoPay</option>
-                    <option value="BCA">Transfer Bank BCA</option>
-                    <option value="Mandiri">Transfer Bank Mandiri</option>
-                    <option value="Alfamart">Alfamart</option>
-                    <option value="Indomaret">Indomaret</option>
-                </select>
-            </div>
-
-            <button onclick="processCheckout()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold text-base shadow-lg shadow-purple-600/30 transition-all flex items-center justify-center gap-2">
-                <i class="fa-solid fa-lock text-sm"></i> Checkout Sekarang
-            </button>
-        </div>
-    </div>
-
-    <!-- Success Notification Box -->
-    <div id="success-notification" class="fixed bottom-6 right-6 z-50 glass-card rounded-2xl p-4 border border-emerald-500/30 shadow-2xl flex items-center gap-4 hidden max-w-sm transform translate-y-10 opacity-0 transition-all duration-300">
-        <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl flex-shrink-0">
-            <i class="fa-solid fa-circle-check"></i>
-        </div>
-        <div>
-            <h4 class="font-bold text-white text-sm">Checkout Berhasil!</h4>
-            <p id="success-desc" class="text-xs text-slate-300 mt-0.5">Pesanan Anda sedang diproses oleh sistem Fariex Store.</p>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="glass-card border-t border-slate-800/80 mt-20 pt-10 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="space-y-4 md:col-span-2">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center shadow-lg">
-                            <i class="fa-solid fa-gamepad text-white text-lg"></i>
-                        </div>
-                        <span class="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent font-heading">FARIEX STORE</span>
-                    </div>
-                    <p class="text-slate-400 text-sm max-w-md">
-                        Platform Top Up Diamond Free Fire & Mobile Legends terpercaya dengan harga bersaing, diskon melimpah, dan proses instan.
-                    </p>
-                    <div class="text-xs text-emerald-400 font-semibold flex items-center gap-2">
-                        <i class="fa-regular fa-clock"></i> Jam Operasional: Pukul 08:00 s/d 23:00 WIB
-                    </div>
-                </div>
-
-                <div class="space-y-3">
-                    <h4 class="text-sm font-bold text-white uppercase tracking-wider font-heading">Navigasi Cepat</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="#home" class="hover:text-purple-400 transition-colors">Beranda</a></li>
-                        <li><a href="#freefire" class="hover:text-purple-400 transition-colors">Top Up Free Fire</a></li>
-                        <li><a href="#mobilelegends" class="hover:text-blue-400 transition-colors">Top Up Mobile Legends</a></li>
-                        <li><a href="#akun" class="hover:text-amber-400 transition-colors">Jual Akun FF & ML</a></li>
-                    </ul>
-                </div>
-
-                <div class="space-y-3">
-                    <h4 class="text-sm font-bold text-white uppercase tracking-wider font-heading">Hubungi Kami</h4>
-                    <p class="text-sm text-slate-400">Butuh bantuan seputar top up atau akun? Hubungi CS kami di:</p>
-                    <a href="https://wa.me/6287879491224" target="_blank" class="inline-flex items-center gap-2 text-emerald-400 font-semibold text-sm hover:underline">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> 0878-7949-1224
-                    </a>
-                </div>
-            </div>
-
-            <div class="border-t border-slate-800/80 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-                <p>&copy; 2026 Fariex Store. All rights reserved.</p>
-                <p class="mt-2 sm:mt-0">Dibuat khusus untuk gamers Free Fire & Mobile Legends Indonesia.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        const ffDiamonds = [
-            { id: 'ff_5', name: '5 Diamond', price: 1000, oldPrice: 1500, discount: '33%' },
-            { id: 'ff_12', name: '12 Diamond', price: 2000, oldPrice: 3000, discount: '33%' },
-            { id: 'ff_50', name: '50 Diamond', price: 7500, oldPrice: 9000, discount: '16%' },
-            { id: 'ff_70', name: '70 Diamond', price: 10000, oldPrice: 12000, discount: '16%' },
-            { id: 'ff_140', name: '140 Diamond', price: 19500, oldPrice: 23000, discount: '15%' },
-            { id: 'ff_355', name: '355 Diamond', price: 48000, oldPrice: 55000, discount: '12%' },
-            { id: 'ff_720', name: '720 Diamond', price: 95000, oldPrice: 110000, discount: '13%' },
-            { id: 'ff_1450', name: '1450 Diamond', price: 190000, oldPrice: 215000, discount: '11%' },
-            { id: 'ff_2180', name: '2180 Diamond', price: 285000, oldPrice: 320000, discount: '10%' }
-        ];
-
-        const ffMemberships = [
-            { id: 'ff_m_weekly', name: 'Membership Mingguan', price: 31000, oldPrice: 35000, discount: '11%' },
-            { id: 'ff_m_monthly', name: 'Membership Bulanan', price: 290000, oldPrice: 330000, discount: '12%' }
-        ];
-
-        const mlDiamonds = [
-            { id: 'ml_3', name: '3 Diamond', price: 1500, oldPrice: 2000, discount: '25%' },
-            { id: 'ml_12', name: '12 Diamond', price: 3500, oldPrice: 4500, discount: '22%' },
-            { id: 'ml_19', name: '19 Diamond', price: 5500, oldPrice: 7000, discount: '21%' },
-            { id: 'ml_59', name: '59 Diamond', price: 15500, oldPrice: 18000, discount: '13%' },
-            { id: 'ml_85', name: '85 Diamond', price: 22000, oldPrice: 26000, discount: '15%' },
-            { id: 'ml_170', name: '170 Diamond', price: 44000, oldPrice: 51000, discount: '13%' },
-            { id: 'ml_296', name: '296 Diamond', price: 75000, oldPrice: 85000, discount: '11%' },
-            { id: 'ml_408', name: '408 Diamond', price: 105000, oldPrice: 120000, discount: '12%' },
-            { id: 'ml_616', name: '616 Diamond', price: 155000, oldPrice: 175000, discount: '11%' }
-        ];
-
-        const mlWdp = [
-            { id: 'ml_wdp_1', name: 'Weekly Diamond Pass (WDP)', price: 28500, oldPrice: 33000, discount: '13%' },
-            { id: 'ml_wdp_3', name: '3x Weekly Diamond Pass (WDP x3)', price: 84500, oldPrice: 99000, discount: '14%' }
-        ];
-
-        function formatRupiah(amount) {
-            return 'Rp ' + amount.toLocaleString('id-ID');
-        }
-
-        function renderProducts() {
-            document.getElementById('ff-diamond-grid').innerHTML = ffDiamonds.map(item => `
-                <div onclick="openCheckout('Free Fire', '${item.name}', ${item.price}, 'ff')" class="glass-card rounded-2xl p-4 border border-slate-800 hover:border-purple-500 cursor-pointer transition-all group relative overflow-hidden flex flex-col justify-between">
-                    <span class="absolute top-2.5 right-2.5 text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-500/20 text-purple-300 border border-purple-500/30">DISC ${item.discount}</span>
-                    <div>
-                        <h5 class="font-bold text-white text-base group-hover:text-purple-300 transition-colors">${item.name}</h5>
-                        <p class="text-xs text-slate-400 line-through mt-0.5">${formatRupiah(item.oldPrice)}</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 pt-2 border-t border-slate-800/80">
-                        <span class="font-extrabold text-amber-400 text-base">${formatRupiah(item.price)}</span>
-                        <span class="w-8 h-8 rounded-xl bg-purple-600/20 group-hover:bg-purple-600 text-purple-300 group-hover:text-white flex items-center justify-center transition-all text-xs">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </span>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('ff-membership-grid').innerHTML = ffMemberships.map(item => `
-                <div onclick="openCheckout('Free Fire', '${item.name}', ${item.price}, 'ff')" class="glass-card rounded-2xl p-4 border border-slate-800 hover:border-amber-500 cursor-pointer transition-all group relative overflow-hidden flex flex-col justify-between">
-                    <span class="absolute top-2.5 right-2.5 text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30">DISC ${item.discount}</span>
-                    <div>
-                        <h5 class="font-bold text-white text-base group-hover:text-amber-300 transition-colors">${item.name}</h5>
-                        <p class="text-xs text-slate-400 line-through mt-0.5">${formatRupiah(item.oldPrice)}</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 pt-2 border-t border-slate-800/80">
-                        <span class="font-extrabold text-amber-400 text-base">${formatRupiah(item.price)}</span>
-                        <span class="w-8 h-8 rounded-xl bg-amber-600/20 group-hover:bg-amber-600 text-amber-300 group-hover:text-white flex items-center justify-center transition-all text-xs">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </span>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('ml-diamond-grid').innerHTML = mlDiamonds.map(item => `
-                <div onclick="openCheckout('Mobile Legends', '${item.name}', ${item.price}, 'ml')" class="glass-card rounded-2xl p-4 border border-slate-800 hover:border-blue-500 cursor-pointer transition-all group relative overflow-hidden flex flex-col justify-between">
-                    <span class="absolute top-2.5 right-2.5 text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30">DISC ${item.discount}</span>
-                    <div>
-                        <h5 class="font-bold text-white text-base group-hover:text-blue-300 transition-colors">${item.name}</h5>
-                        <p class="text-xs text-slate-400 line-through mt-0.5">${formatRupiah(item.oldPrice)}</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 pt-2 border-t border-slate-800/80">
-                        <span class="font-extrabold text-amber-400 text-base">${formatRupiah(item.price)}</span>
-                        <span class="w-8 h-8 rounded-xl bg-blue-600/20 group-hover:bg-blue-600 text-blue-300 group-hover:text-white flex items-center justify-center transition-all text-xs">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </span>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('ml-wdp-grid').innerHTML = mlWdp.map(item => `
-                <div onclick="openCheckout('Mobile Legends', '${item.name}', ${item.price}, 'ml')" class="glass-card rounded-2xl p-4 border border-slate-800 hover:border-amber-500 cursor-pointer transition-all group relative overflow-hidden flex flex-col justify-between">
-                    <span class="absolute top-2.5 right-2.5 text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30">DISC ${item.discount}</span>
-                    <div>
-                        <h5 class="font-bold text-white text-base group-hover:text-amber-300 transition-colors">${item.name}</h5>
-                        <p class="text-xs text-slate-400 line-through mt-0.5">${formatRupiah(item.oldPrice)}</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 pt-2 border-t border-slate-800/80">
-                        <span class="font-extrabold text-amber-400 text-base">${formatRupiah(item.price)}</span>
-                        <span class="w-8 h-8 rounded-xl bg-amber-600/20 group-hover:bg-amber-600 text-amber-300 group-hover:text-white flex items-center justify-center transition-all text-xs">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        let currentCheckoutData = {};
-
-        function openCheckout(game, itemName, price, type) {
-            let userId = '';
-            if (type === 'ff') {
-                userId = document.getElementById('ff-userid').value.trim();
-                if (!userId) {
-                    alertCustom('Mohon masukkan User ID Free Fire terlebih dahulu di kolom nomor 1!');
-                    document.getElementById('ff-userid').focus();
-                    return;
-                }
-            } else if (type === 'ml') {
-                const uid = document.getElementById('ml-userid').value.trim();
-                const zid = document.getElementById('ml-zoneid').value.trim();
-                if (!uid || !zid) {
-                    alertCustom('Mohon masukkan User ID & Zone ID Mobile Legends terlebih dahulu di kolom nomor 1!');
-                    document.getElementById('ml-userid').focus();
-                    return;
-                }
-                userId = `${uid} (${zid})`;
-            }
-
-            currentCheckoutData = { game, itemName, price, userId };
-
-            document.getElementById('modal-game').innerText = game;
-            document.getElementById('modal-item').innerText = itemName;
-            document.getElementById('modal-userid').innerText = userId;
-            document.getElementById('modal-price').innerText = formatRupiah(price);
-
-            const modal = document.getElementById('checkout-modal');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                document.getElementById('modal-content').classList.remove('scale-95');
-                document.getElementById('modal-content').classList.add('scale-100');
-            }, 10);
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('checkout-modal');
-            document.getElementById('modal-content').classList.remove('scale-100');
-            document.getElementById('modal-content').classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 200);
-        }
-
-        function alertCustom(message) {
-            const alertDiv = document.createElement('div');
-            alertDiv.className = 'fixed top-6 left-1/2 transform -translate-x-1/2 z-50 glass-card px-6 py-3 rounded-2xl border border-red-500/40 text-red-300 text-sm font-semibold shadow-2xl flex items-center gap-3';
-            alertDiv.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-red-400 text-lg"></i> <span>${message}</span>`;
-            document.body.appendChild(alertDiv);
-            setTimeout(() => {
-                alertDiv.remove();
-            }, 3000);
-        }
-
-        function processCheckout() {
-            const paymentMethod = document.getElementById('payment-method-select').value;
-            closeModal();
-
-            const notif = document.getElementById('success-notification');
-            document.getElementById('success-desc').innerText = `Pesanan ${currentCheckoutData.itemName} untuk ID ${currentCheckoutData.userId} via ${paymentMethod} berhasil dibuat!`;
-            notif.classList.remove('hidden');
-            setTimeout(() => {
-                notif.classList.remove('translate-y-10', 'opacity-0');
-            }, 10);
-
-            setTimeout(() => {
-                notif.classList.add('translate-y-10', 'opacity-0');
-                setTimeout(() => {
-                    notif.classList.add('hidden');
-                }, 300);
-            }, 4000);
-        }
-
-        function checkStoreStatus() {
-            const now = new Date();
-            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-            const wibDate = new Date(utc + (3600000 * 7));
-            const hours = wibDate.getHours();
-
-            const isOpen = hours >= 8 && hours < 23;
-            const badge = document.getElementById('store-status-badge');
-            const statusText = document.getElementById('status-text');
-            const mobileStatusText = document.getElementById('mobile-status-text');
-
-            if (isOpen) {
-                badge.className = "flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400";
-                badge.querySelector('span').className = "w-2 h-2 rounded-full bg-emerald-400 animate-pulse";
-                statusText.innerText = "Buka (08:00 - 23:00)";
-                mobileStatusText.innerText = "Buka (08:00 - 23:00)";
-            } else {
-                badge.className = "flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-red-500/10 border border-red-500/30 text-red-400";
-                badge.querySelector('span').className = "w-2 h-2 rounded-full bg-red-400";
-                statusText.innerText = "Tutup (Buka 08:00 WIB)";
-                mobileStatusText.innerText = "Tutup (Buka 08:00 WIB)";
-            }
-        }
-
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        window.onload = function() {
-            renderProducts();
-            checkStoreStatus();
-            setInterval(checkStoreStatus, 60000);
-        };
-    </script>
-</body>
-</html>
+            <form id="wishes-form" onsubmit="submitWish(event)" class="space-y-4 max-w-md mx-auto mb-6">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nama Anda / Pengirim</label>
+                    <inp
