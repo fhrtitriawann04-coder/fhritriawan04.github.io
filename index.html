@@ -1,288 +1,486 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Ulang Tahun Spesial</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Poppins & Great Vibes -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        poppins: ['Poppins', 'sans-serif'],
-                        great: ['Great Vibes', 'cursive']
-                    }
-                }
+    <title>FFML Arena - MLBB & Free Fire Tactical Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #07030d;
+            --bg-card: #12091f;
+            --neon-red: #ff0055;
+            --neon-purple: #9d00ff;
+            --neon-blue: #00f3ff;
+            --text-main: #f0f0f5;
+            --text-muted: #9494b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(157, 0, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(255, 0, 85, 0.12) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 35px 20px;
+            background: linear-gradient(180deg, rgba(18, 9, 31, 0.95) 0%, transparent 100%);
+            border-bottom: 2px solid var(--neon-purple);
+            box-shadow: 0 0 25px rgba(157, 0, 255, 0.35);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.6rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(157, 0, 255, 0.5);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-top: 8px;
+            letter-spacing: 1.5px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 20px;
+        }
+
+        /* Nav Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(18, 9, 31, 0.8);
+            border: 2px solid var(--neon-purple);
+            color: var(--text-main);
+            padding: 12px 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(157, 0, 255, 0.2);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--neon-purple);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 25px var(--neon-purple), inset 0 0 10px var(--neon-blue);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Controls Section */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.1);
+        }
+
+        @media(min-width: 768px) {
+            .controls {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
             }
         }
-    </script>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            background: rgba(7, 3, 13, 0.9);
+            border: 1px solid var(--neon-blue);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+            transition: box-shadow 0.3s;
         }
-        .glass {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+
+        .search-box input:focus {
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.6);
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(3deg); }
+
+        .filter-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
         }
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
+
+        .filter-btn {
+            background: rgba(18, 9, 31, 0.9);
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
         }
-        @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--neon-red);
+            border-color: var(--neon-red);
+            color: #fff;
+            box-shadow: 0 0 15px var(--neon-red);
         }
-        .animate-spin-slow {
-            animation: spin-slow 6s linear infinite;
+
+        /* Content Sections */
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(157, 0, 255, 0.4);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--neon-red);
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.45);
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img-container img {
+            transform: scale(1.08);
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(7, 3, 13, 0.85);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-family: 'Orbitron', sans-serif;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .detail-box {
+            background: rgba(7, 3, 13, 0.7);
+            border-left: 3px solid var(--neon-purple);
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 0.95krem;
+            border-radius: 0 6px 6px 0;
+            line-height: 1.4;
+        }
+
+        .copy-btn {
+            width: 100%;
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-red));
+            border: none;
+            color: #fff;
+            padding: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+            box-shadow: 0 0 10px rgba(157, 0, 255, 0.3);
+        }
+
+        .copy-btn:hover {
+            opacity: 0.95;
+            box-shadow: 0 0 20px var(--neon-red);
+            transform: scale(1.02);
+        }
+
+        .copy-btn.copied {
+            background: #00ff66;
+            color: #000;
+            box-shadow: 0 0 20px #00ff66;
+        }
+
+        /* Toast Notification */
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--neon-blue);
+            color: #000;
+            padding: 14px 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            border-radius: 6px;
+            box-shadow: 0 0 25px var(--neon-blue);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #toast.show {
+            transform: translateX(-50%) translateY(0);
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-pink-100 via-purple-100 to-indigo-100 text-gray-800 min-h-screen relative">
+<body>
 
-    <!-- Music Player Floating Button -->
-    <div id="music-control" onclick="toggleMusic()" class="fixed bottom-5 right-5 z-40 bg-pink-600 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-transform transform hover:scale-110 active:scale-95 border-2 border-white">
-        <i id="music-icon" class="fa-solid fa-music text-lg"></i>
-    </div>
+    <header>
+        <h1>FFML Arena</h1>
+        <div class="subtitle">Mobile Legends & Free Fire Ultimate Tactical Hub</div>
+    </header>
 
-    <!-- 1. Halaman Pembuka / Cover -->
-    <section id="cover-section" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-tr from-pink-500 via-purple-500 to-indigo-600 text-white p-6 text-center transition-all duration-700">
-        <div class="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
-            <div class="absolute top-10 left-10 text-4xl animate-float">🎈</div>
-            <div class="absolute bottom-20 right-16 text-4xl animate-float" style="animation-delay: 1s;">🎉</div>
-            <div class="absolute top-1/3 right-10 text-3xl animate-float" style="animation-delay: 2s;">✨</div>
-            <div class="absolute bottom-1/4 left-16 text-3xl animate-float" style="animation-delay: 1.5s;">🍰</div>
+    <div class="container">
+        <!-- Main Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('mlbb')">Mobile Legends (ML)</button>
+            <button class="tab-btn" onclick="switchTab('ff')">Free Fire (FF)</button>
         </div>
 
-        <div class="relative z-10 max-w-md w-full glass p-8 rounded-3xl shadow-2xl text-gray-800 border border-white/50">
-            <span class="text-xs font-semibold uppercase tracking-widest text-pink-600 bg-pink-100 px-3 py-1 rounded-full">Undangan Spesial</span>
-            <h1 class="font-great text-5xl md:text-6xl text-pink-600 mt-3 mb-1">You're Invited!</h1>
-            <p class="text-gray-600 text-xs mb-5">Merayakan Hari Bahagia Ulang Tahun</p>
-
-            <!-- Editable Name on Cover -->
-            <div class="mb-5">
-                <input type="text" id="cover-name" value="Keisha Aurelia" class="w-full text-center font-bold text-2xl text-gray-800 bg-transparent border-b-2 border-pink-400 focus:outline-none focus:border-pink-600 pb-1" placeholder="Nama yang ulang tahun">
-                <span class="text-[10px] text-gray-400 mt-1 block">💡 (Nama bisa diketik & diubah langsung)</span>
-            </div>
-
-            <!-- Cover Photo with Uploader & Cake Illustration Fallback -->
-            <div class="relative w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden shadow-lg border-4 border-white group bg-pink-100 flex items-center justify-center">
-                <img id="cover-photo-preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Birthday Person" class="w-full h-full object-cover">
-                <label for="cover-file-input" class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-white text-xs font-medium p-2">
-                    <i class="fa-solid fa-camera text-lg mb-1"></i> Ganti Foto
-                </label>
-                <input type="file" id="cover-file-input" accept="image/*" class="hidden" onchange="updateCoverPhoto(event)">
-            </div>
-            
-            <div class="flex justify-center gap-2 mb-5">
-                <button onclick="resetToCakeIllustration()" class="text-[11px] bg-purple-100 hover:bg-purple-200 text-purple-700 px-3 py-1 rounded-full font-medium transition-all flex items-center gap-1">
-                    <i class="fa-solid fa-cake-candles"></i> Pakai Ilustrasi Kue
-                </button>
-            </div>
-
-            <p class="text-gray-600 text-xs mb-5 italic">"Sebuah kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir."</p>
-
-            <button onclick="openInvitation()" class="w-full py-3 px-6 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold rounded-full shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2">
-                <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
-            </button>
-        </div>
-    </section>
-
-    <!-- Main Content Container -->
-    <div id="main-content" class="hidden opacity-0 transition-opacity duration-1000 max-w-2xl mx-auto px-4 py-8 space-y-10">
-
-        <!-- 2. Profil yang Berulang Tahun -->
-        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl text-center relative overflow-hidden border border-white/60">
-            <div class="absolute -top-10 -right-10 text-pink-200 text-9xl opacity-30 font-great pointer-events-none">Birthday</div>
-            
-            <div class="relative w-36 h-36 mx-auto mb-3 rounded-full overflow-hidden shadow-2xl border-4 border-pink-300 group bg-pink-100 flex items-center justify-center">
-                <img id="profile-photo-preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Profile" class="w-full h-full object-cover">
-                <label for="profile-file-input" class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-white text-xs font-semibold p-2">
-                    <i class="fa-solid fa-camera text-xl mb-1"></i> Ganti Foto Galeri
-                </label>
-                <input type="file" id="profile-file-input" accept="image/*" class="hidden" onchange="updateProfilePhoto(event)">
-            </div>
-            <span class="text-xs text-gray-500 block mb-3">✨ (Klik foto di atas untuk ganti dari galeri HP Anda)</span>
-
-            <div class="inline-block bg-pink-100 text-pink-600 px-4 py-1 rounded-full text-sm font-semibold mb-3">
-                Ulang Tahun ke-<span contenteditable="true" id="profile-age" class="outline-none border-b border-pink-400">17</span>
-            </div>
-
-            <h2 class="text-3xl font-bold text-gray-800 mb-2">
-                <input type="text" id="profile-name" value="Keisha Aurelia Putri" class="w-full text-center bg-transparent font-bold border-b border-dashed border-gray-300 focus:border-pink-500 focus:outline-none">
-            </h2>
-
-            <div class="mt-4 bg-pink-50 p-4 rounded-2xl border border-pink-200">
-                <p class="text-gray-700 italic text-sm" contenteditable="true" id="profile-greeting">
-                    "Terima kasih atas segala doa dan kasih sayang di hari spesialku. Semoga kebahagiaan senantiasa menyertai kita semua!"
-                </p>
-                <span class="text-[10px] text-pink-400 mt-2 block">💡 (Pesan ucapan di atas bisa diklik dan diedit langsung)</span>
-            </div>
-        </section>
-
-        <!-- 5. Countdown Ulang Tahun -->
-        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl text-center border border-white/60">
-            <h3 class="text-lg font-bold text-gray-800 mb-1 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-clock text-pink-500"></i> Menuju Hari H
-            </h3>
-            <p class="text-xs text-gray-500 mb-5">Hitung mundur waktu perayaan acara ulang tahun</p>
-
-            <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-md mx-auto">
-                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
-                    <span id="days" class="text-2xl md:text-3xl font-bold block">00</span>
-                    <span class="text-[10px] uppercase tracking-wider">Hari</span>
+        <!-- MOBILE LEGENDS SECTION -->
+        <div id="mlbb-section" class="section-content active">
+            <div class="controls">
+                <div class="search-box">
+                    <input type="text" id="ml-search" placeholder="Cari Hero MLBB..." onkeyup="filterML()">
                 </div>
-                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
-                    <span id="hours" class="text-2xl md:text-3xl font-bold block">00</span>
-                    <span class="text-[10px] uppercase tracking-wider">Jam</span>
-                </div>
-                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
-                    <span id="minutes" class="text-2xl md:text-3xl font-bold block">00</span>
-                    <span class="text-[10px] uppercase tracking-wider">Menit</span>
-                </div>
-                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
-                    <span id="seconds" class="text-2xl md:text-3xl font-bold block">00</span>
-                    <span class="text-[10px] uppercase tracking-wider">Detik</span>
+                <div class="filter-group">
+                    <button class="filter-btn active" onclick="filterMLRole('all', this)">All</button>
+                    <button class="filter-btn" onclick="filterMLRole('Assassin', this)">Assassin</button>
+                    <button class="filter-btn" onclick="filterMLRole('Mage', this)">Mage</button>
+                    <button class="filter-btn" onclick="filterMLRole('Marksman', this)">Marksman</button>
+                    <button class="filter-btn" onclick="filterMLRole('Fighter', this)">Fighter</button>
                 </div>
             </div>
-        </section>
 
-        <!-- 3. Detail Acara -->
-        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
-            <div class="text-center mb-6">
-                <span class="text-xs font-semibold text-purple-600 uppercase tracking-widest bg-purple-100 px-3 py-1 rounded-full">Save The Date</span>
-                <h3 class="text-2xl font-bold text-gray-800 mt-2">Detail Acara Perayaan</h3>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-4 mb-6">
-                <div class="bg-white/80 p-4 rounded-2xl shadow-sm border border-pink-100 flex items-start gap-3">
-                    <div class="bg-pink-100 text-pink-600 w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
-                        <i class="fa-solid fa-calendar-days"></i>
+            <div class="grid" id="ml-grid">
+                <div class="card" data-name="Gusion" data-role="Assassin">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=60" alt="Gusion">
+                        <span class="badge">Assassin</span>
                     </div>
-                    <div>
-                        <h4 class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Hari & Tanggal</h4>
-                        <input type="text" id="event-date" value="Sabtu, 25 Juli 2026" class="font-bold text-gray-800 text-sm md:text-base w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-pink-500 focus:outline-none">
+                    <div class="card-body">
+                        <div class="card-title">Gusion</div>
+                        <div class="card-desc">Holy Blade - Assassin burst magic dengan mobilitas pedang bayangan yang lincah.</div>
+                        <div class="detail-box">
+                            <strong>Build Item:</strong> Magic Shoes, Genius Wand, Holy Crystal, Divine Glaive, Concentrated Energy, Blood Wings
+                        </div>
+                        <button class="copy-btn" onclick="copyData(this, 'Magic Shoes, Genius Wand, Holy Crystal, Divine Glaive, Concentrated Energy, Blood Wings')">Salin Build Item</button>
                     </div>
                 </div>
 
-                <div class="bg-white/80 p-4 rounded-2xl shadow-sm border border-pink-100 flex items-start gap-3">
-                    <div class="bg-purple-100 text-purple-600 w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
-                        <i class="fa-solid fa-clock"></i>
+                <div class="card" data-name="Lunox" data-role="Mage">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&auto=format&fit=crop&q=60" alt="Lunox">
+                        <span class="badge">Mage</span>
                     </div>
-                    <div>
-                        <h4 class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Waktu / Jam</h4>
-                        <input type="text" id="event-time" value="16.00 WIB - Selesai" class="font-bold text-gray-800 text-sm md:text-base w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-purple-500 focus:outline-none">
+                    <div class="card-body">
+                        <div class="card-title">Lunox</div>
+                        <div class="card-desc">Twilight Goddess - Mage penyeimbang kosmik dengan mode serang dan pertahanan absolut.</div>
+                        <div class="detail-box">
+                            <strong>Build Item:</strong> Arcane Boots, Clock of Destiny, Lightning Truncheon, Holy Crystal, Divine Glaive, Winter Truncheon
+                        </div>
+                        <button class="copy-btn" onclick="copyData(this, 'Arcane Boots, Clock of Destiny, Lightning Truncheon, Holy Crystal, Divine Glaive, Winter Truncheon')">Salin Build Item</button>
                     </div>
                 </div>
-            </div>
 
-            <div class="bg-white/80 p-5 rounded-2xl shadow-sm border border-pink-100 text-center">
-                <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-lg mx-auto mb-2">
-                    <i class="fa-solid fa-location-dot"></i>
+                <div class="card" data-name="Moskov" data-role="Marksman">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500&auto=format&fit=crop&q=60" alt="Moskov">
+                        <span class="badge">Marksman</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">Moskov</div>
+                        <div class="card-desc">Spear of Quiescence - Marksman attack speed tinggi dengan penetrasi jarak dekat mematikan.</div>
+                        <div class="detail-box">
+                            <strong>Build Item:</strong> Swift Boots, Corrosion Scythe, Demon Hunter Sword, Golden Staff, Windtalker, Malefic Roar
+                        </div>
+                        <button class="copy-btn" onclick="copyData(this, 'Swift Boots, Corrosion Scythe, Demon Hunter Sword, Golden Staff, Windtalker, Malefic Roar')">Salin Build Item</button>
+                    </div>
                 </div>
-                <h4 class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Lokasi Acara</h4>
-                <input type="text" id="event-location-name" value="Grand Cafe & Resto, Jl. Melati Indah No. 12, Jakarta" class="font-bold text-gray-800 text-sm md:text-base w-full text-center bg-transparent border-b border-transparent hover:border-gray-300 focus:border-indigo-500 focus:outline-none mb-3">
-                
-                <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
-                    <input type="text" id="maps-url" value="https://maps.google.com" class="text-xs bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 flex-grow focus:outline-none focus:border-indigo-500" placeholder="Masukkan Link Google Maps">
-                    <a id="maps-btn" href="https://maps.google.com" target="_blank" class="py-2.5 px-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white text-xs font-medium rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-map-location-dot"></i> Buka Maps
-                    </a>
+
+                <div class="card" data-name="Yu Zhong" data-role="Fighter">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&auto=format&fit=crop&q=60" alt="Yu Zhong">
+                        <span class="badge">Fighter</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">Yu Zhong</div>
+                        <div class="card-desc">Black Dragon - Fighter sustain garis depan dengan kemampuan berubah wujud naga.</div>
+                        <div class="detail-box">
+                            <strong>Build Item:</strong> Tough Boots, Bloodlust Axe, War Axe, Oracle, Queen's Wings, Immortality
+                        </div>
+                        <button class="copy-btn" onclick="copyData(this, 'Tough Boots, Bloodlust Axe, War Axe, Oracle, Queen\'s Wings, Immortality')">Salin Build Item</button>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- 4. Galeri Foto -->
-        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
-            <div class="text-center mb-6">
-                <span class="text-xs font-semibold text-pink-600 uppercase tracking-widest bg-pink-100 px-3 py-1 rounded-full">Momen Indah</span>
-                <h3 class="text-2xl font-bold text-gray-800 mt-2">Galeri Foto</h3>
-                <p class="text-xs text-gray-500 mt-1">Unggah dan tambahkan foto kenangan dari galeri perangkat Anda</p>
-            </div>
-
-            <div class="mb-6 text-center">
-                <label for="gallery-file-input" class="inline-flex items-center gap-2 px-5 py-3 bg-pink-500 hover:bg-pink-600 text-white text-sm font-medium rounded-full shadow-md cursor-pointer transition-all">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> Tambah Foto dari Galeri HP
-                </label>
-                <input type="file" id="gallery-file-input" accept="image/*" multiple class="hidden" onchange="addGalleryPhotos(event)">
-            </div>
-
-            <!-- Dynamic Gallery Grid -->
-            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <!-- Foto-foto yang diunggah akan muncul secara otomatis di sini -->
-            </div>
-            <p id="gallery-empty-text" class="text-center text-xs text-gray-400 italic py-6">Belum ada foto yang diunggah. Silakan klik tombol di atas untuk menambah foto dari galeri Anda.</p>
-        </section>
-
-        <!-- Lightbox Modal for Gallery -->
-        <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/80 hidden items-center justify-center p-4" onclick="closeLightbox()">
-            <div class="relative max-w-3xl w-full max-h-[90vh] flex items-center justify-center">
-                <img id="lightbox-img" src="" alt="Zoomed Photo" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl object-contain">
-                <button class="absolute top-2 right-2 text-white bg-black/50 hover:bg-black w-10 h-10 rounded-full flex items-center justify-center text-lg">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
             </div>
         </div>
 
-        <!-- 6. RSVP / Konfirmasi Kehadiran -->
-        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
-            <div class="text-center mb-6">
-                <span class="text-xs font-semibold text-purple-600 uppercase tracking-widest bg-purple-100 px-3 py-1 rounded-full">RSVP</span>
-                <h3 class="text-2xl font-bold text-gray-800 mt-2">Konfirmasi Kehadiran</h3>
-                <p class="text-xs text-gray-500 mt-1">Mohon konfirmasi kehadiran Anda untuk kelancaran acara</p>
+        <!-- FREE FIRE SECTION -->
+        <div id="ff-section" class="section-content">
+            <div class="controls">
+                <div class="search-box">
+                    <input type="text" id="ff-search" placeholder="Cari Karakter Free Fire..." onkeyup="filterFF()">
+                </div>
+                <div class="filter-group">
+                    <button class="filter-btn active" onclick="filterFFRole('all', this)">All</button>
+                    <button class="filter-btn" onclick="filterFFRole('Rush', this)">Rusher</button>
+                    <button class="filter-btn" onclick="filterFFRole('Support', this)">Support</button>
+                    <button class="filter-btn" onclick="filterFFRole('Survive', this)">Surviver</button>
+                </div>
             </div>
 
-            <form id="rsvp-form" onsubmit="submitRSVP(event)" class="space-y-4 max-w-md mx-auto">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nama Tamu Undangan</label>
-                    <input type="text" id="rsvp-name" required placeholder="Masukkan nama Anda" class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500">
+            <div class="grid" id="ff-grid">
+                <div class="card" data-name="Alok" data-role="Support">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=500&auto=format&fit=crop&q=60" alt="Alok">
+                        <span class="badge">Support</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">DJ Alok</div>
+                        <div class="card-desc">Drop the Beat - Karakter ikonik dengan aura penyembuh dan tambahan movement speed tim.</div>
+                        <div class="detail-box">
+                            <strong>Rekomendasi Skill Combo:</strong><br>
+                            1. Alok (Active - Heal)<br>
+                            2. Kelly (Dash - Speed)<br>
+                            3. Hayato (Bushido - Penetration)<br>
+                            4. Jota (Sustained Raids - HP Kill)
+                        </div>
+                        <button class="copy-btn" onclick="copyData(this, 'Alok + Kelly + Hayato + Jota')">Salin Kombinasi Skill</button>
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Status Kehadiran</label>
-                    <select id="rsvp-status" class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500">
-                        <option value="Hadir">Hadir (Datang ke Acara)</option>
-                        <option value="Tidak Hadir">Mohon Maaf, Berhalangan Hadir</option>
-                    </select>
+                <div class="card" data-name="Chrono" data-role="Rush">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=500&auto=format&fit=crop&q=60" alt="Chrono">
+                        <span class="badge">Rusher</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">Chrono</div>
+                        <div class="card-desc">Time Turner - Pelindung perisai force field penahan damage tembakan musuh secara instan.</div>
+                        <div class="detail-box">
+                            <strong>Rekomendasi Skill Combo:</strong><br>
+                            1. Chrono (Active - Shield)<br>
+                            2. Antonio (Gang's Blessing)<br>
+                            3. Moco (Enigma's Eye)<br>
+                            4. Kelly (Dash)
+                        </div>
+                        <button class="copy-btn" onclick="copyData(this, 'Chrono + Antonio + Moco + Kelly')">Salin Kombinasi Skill</button>
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Jumlah Tamu</label>
-                    <input type="number" id="rsvp-count" min="1" max="100" value="1" class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500" placeholder="Masukkan jumlah tamu">
-                    <span class="text-[10px] text-gray-400 mt-1 block">💡 Ketik jumlah tamu yang akan hadir sesuai kebutuhan Anda</span>
+                <div class="card" data-name="Wukong" data-role="Rush">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60" alt="Wukong">
+                        <span class="badge">Rusher</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">Wukong</div>
+                        <div class="card-desc">Camouflage - Mengubah diri menjadi semak-semak untuk melakukan penygapan taktis.</div>
+                        <div class="detail-box">
+                            <strong>Rekomendasi Skill Combo:</strong><br>
+                            1. Wukong (Active - Bush)<br>
+                            2. D-bee (Bullet Beats)<br>
+                            3. Leon (Buzzer Beater)<br>
+                            4. Kelly (Dash)
+                        </div>
+                        <button class="copy-btn" onclick="copyData(this, 'Wukong + D-bee + Leon + Kelly')">Salin Kombinasi Skill</button>
+                    </div>
                 </div>
 
-                <div class="pt-2 flex flex-col sm:flex-row gap-3">
-                    <button type="submit" class="flex-1 py-3 px-6 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
-                        <i class="fa-solid fa-floppy-disk"></i> Simpan RSVP
-                    </button>
-                    <button type="button" onclick="sendRSVPWhatsApp()" class="flex-1 py-3 px-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> Kirim via WA
-                    </button>
-                </div>
-            </form>
-        </section>
-
-        <!-- 7. Ucapan dan Doa -->
-        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
-            <div class="text-center mb-6">
-                <span class="text-xs font-semibold text-pink-600 uppercase tracking-widest bg-pink-100 px-3 py-1 rounded-full">Ucapan & Doa</span>
-                <h3 class="text-2xl font-bold text-gray-800 mt-2">Buku Tamu Ucapan</h3>
-                <p class="text-xs text-gray-500 mt-1">Tuliskan pesan, doa, dan harapan untuk yang ulang tahun</p>
-            </div>
-
-            <form id="wishes-form" onsubmit="submitWish(event)" class="space-y-4 max-w-md mx-auto mb-6">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nama Anda / Pengirim</label>
-                    <input type="text" id="wish-name" required placeholder="Contoh: Budi & Keluarga" class="w-full bg-white/90 border border-gray-200
+                <div class="card" data-name="Hayato" data-role="Survive">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=60" alt="Hayato">
+                        <span class="badge">Surviver</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">Hayato</div>
+                        <div class="card-desc">Bushido - Semakin tipis HP Anda, semakin besar daya tembus armor musuh.</div>
+                        <div class="detail-box">
+                            <strong>Rekomendasi Skill Combo:</strong><br>
+                            1. Hayato (Passive)<br>
+                            2. Alok (Heal)<br>
+                            3. Kelly (Speed)<br>
+                            4. Maxim (Gluttony)
+                        </div>
+                        <button class="copy-btn" onclick="copyData(this, 'Hayato + Alok + Kelly + Maxim')">Salin Kombinasi Skill</button>
+                    </di
