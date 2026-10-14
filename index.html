@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FARIEX STORE - Top Up Diamond FF & Mobile Legends</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-dark: #0b0e14;
+      --card-bg: rgba(22, 28, 45, 0.85);
+      --primary: #00d2ff;
+      --secondary: #3a7bd5;
+      --accent: #ff007f;
+      --text-main: #ffffff;
+      --text-muted: #a0aec0;
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      /* Latar Belakang Gaming */
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(58, 123, 213, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 127, 0.2) 0%, transparent 40%),
+        linear-gradient(rgba(11, 14, 20, 0.85), rgba(11, 14, 20, 0.95)),
+        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1920&q=80');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Navbar Header */
+    header {
+      background: rgba(11, 14, 20, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 15px 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Hero Banner */
+    .hero {
+      text-align: center;
+      padding: 30px 15px;
+      margin-top: 10px;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      text-shadow: 0 0 15px rgba(0,210,255,0.4);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Step Section Cards */
+    .section-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+    }
+
+    .step-badge {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    /* Pilihan Game Tab */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+    }
+
+    .game-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 210, 255, 0.5);
+    }
+
+    .game-card.active {
+      border-color: var(--primary);
+      background: rgba(0, 210, 255, 0.1);
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+    }
+
+    .game-card i {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .game-card h3 {
+      font-size: 0.95rem;
+    }
+
+    /* Form Input ID */
+    .input-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .input-field {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .input-field label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .input-field input {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .input-field input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    }
+
+    /* Grid Paket Diamond */
+    .diamond-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .diamond-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .diamond-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--primary);
+    }
+
+    .diamond-card.selected {
+      border-color: var(--primary);
+      background: rgba(0, 210, 255, 0.15);
+      box-shadow: 0 0 12px rgba(0, 210, 255, 0.25);
+    }
+
+    .diamond-card i {
+      color: #00d2ff;
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+
+    .diamond-amount {
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: block;
+    }
+
+    .diamond-price {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Metode Pembayaran */
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    .payment-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .payment-card:hover {
+      border-color: var(--primary);
+    }
+
+    .payment-card.selected {
+      border-color: var(--primary);
+      background: rgba(0, 210, 255, 0.15);
+    }
+
+    .payment-card i {
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+
+    .payment-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Tombol Beli */
+    .btn-buy {
+      width: 100%;
+      background: linear-gradient(45deg, #00d2ff, #0072ff);
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+      margin-top: 10px;
+    }
+
+    .btn-buy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 210, 255, 0.6);
+    }
+
+    .btn-buy:active {
+      transform: translateY(0);
+    }
+
+    /* Floating CS WhatsApp */
+    .btn-wa-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 99;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .btn-wa-float:hover {
+      transform: scale(1.1);
+    }
+
+    /* Modal Konfirmasi */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: #161c2d;
+      border: 1px solid var(--border-color);
+      width: 90%;
+      max-width: 420px;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-header {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    .modal-detail {
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .modal-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-modal {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-cancel {
+      background: #e53e3e;
+      color: white;
+    }
+
+    .btn-confirm {
+      background: #25d366;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+      background: rgba(11, 14, 20, 0.9);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navbar -->
+  <header>
+    <div class="container nav-wrapper">
+      <div class="logo">
+        <i class="fa-solid fa-gamepad"></i> FARIEX STORE
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <div class="container hero">
+    <h1>TOP UP DIAMOND GAME</h1>
+    <p>Proses Serba Otomatis, Murah, Terpercaya, dan Buka 24 Jam!</p>
+  </div>
+
+  <main class="container">
+    <!-- STEP 1: PILIH GAME -->
+    <div class="section-card">
+      <div class="section-title">
+        <div class="step-badge">1</div> Pilih Game
+      </div>
+      <div class="game-grid">
+        <div class="game-card active" onclick="selectGame('ff', this)">
+          <i class="fa-solid fa-fire"></i>
+          <h3>Free Fire</h3>
+        </div>
+        <div class="game-card" onclick="selectGame('ml', this)">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h3>Mobile Legends</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: MASUKKAN ID -->
+    <div class="section-card">
+      <div class="section-title">
+        <div class="step-badge">2</div> Data Akun
+      </div>
+      <div class="input-group">
+        <div class="input-field">
+          <label for="userId">User ID</label>
+          <input type="number" id="userId" placeholder="Contoh: 12345678">
+        </div>
+        <div class="input-field" id="zoneIdContainer" style="display: none;">
+          <label for="zoneId">Zone ID / Server ID</label>
+          <input type="number" id="zoneId" placeholder="Contoh: 1234">
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3: PILIH NOMINAL DIAMOND -->
+    <div class="section-card">
+      <div class="section-title">
+        <div class="step-badge">3</div> Pilih Nominal Diamond
+      </div>
+      <div class="diamond-grid" id="diamondList">
+        <!-- Pilihan paket dimuat secara dinamis via JavaScript -->
+      </div>
+    </div>
+
+    <!-- STEP 4: PILIH METODE PEMBAYARAN -->
+    <div class="section-card">
+      <div class="section-title">
+        <div class="step-badge">4</div> Metode Pembayaran
+      </div>
+      <div class="payment-grid">
+        <div class="payment-card" onclick="selectPayment('QRIS (All Payment)', this)">
+          <i class="fa-solid fa-qrcode"></i>
+          <span class="payment-name">QRIS Instant</span>
+        </div>
+        <div class="payment-card" onclick="selectPayment('DANA', this)">
+          <i class="fa-solid fa-wallet"></i>
+          <span class="payment-name">DANA</span>
+        </div>
+        <div class="payment-card" onclick="selectPayment('OVO', this)">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <span class="payment-name">OVO</span>
+        </div>
+        <div class="payment-card" onclick="selectPayment('GoPay', this)">
+          <i class="fa-solid fa-coins"></i>
+          <span class="payment-name">GoPay</span>
+        </div>
+        <div class="payment-card" onclick="selectPayment('Bank BCA', this)">
+          <i class="fa-solid fa-building-columns"></i>
+          <span class="payment-name">Bank BCA</span>
+        </div>
+        <div class="payment-card" onclick="selectPayment('Bank Mandiri', this)">
+          <i class="fa-solid fa-building-columns"></i>
+          <span class="payment-name">Bank Mandiri</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOMBOL BELI -->
+    <button class="btn-buy" onclick="processOrder()">
+      <i class="fa-solid fa-cart-shopping"></i> BELI SEKARANG
+    </button>
+  </main>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/6287879491224?text=Halo%20Fariex%20Store,%20saya%20butuh%20bantuan" class="btn-wa-float" target="_blank" title="Hubungi WhatsApp CS">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Modal Konfirmasi Pesanan -->
+  <div class="modal" id="orderModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <i class="fa-solid fa-receipt"></i> Konfirmasi Pesanan
+      </div>
+      <div class="modal-detail" id="modalText">
+        <!-- Isi detail ringkasan pesanan -->
+      </div>
+      <div class="modal-btns">
+        <button class="btn-modal btn-cancel" onclick="closeModal()">Batal</button>
+        <button class="btn-modal btn-confirm" onclick="redirectToWhatsApp()">Lanjut ke WA</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 <strong>FARIEX STORE</strong>. All Rights Reserved.</p>
+    <p>Layanan Pelanggan WhatsApp: 087879491224</p>
+  </footer>
+
+  <!-- Logic JavaScript Interaktif -->
+  <script>
+    // Data Nominal Diamond
+    const packages = {
+      ff: [
+        { name: '50 Diamond', price: 'Rp 8.000' },
+        { name: '70 Diamond', price: 'Rp 10.000' },
+        { name: '140 Diamond', price: 'Rp 20.000' },
+        { name: '355 Diamond', price: 'Rp 50.000' },
+        { name: '720 Diamond', price: 'Rp 100.000' },
+        { name: '1440 Diamond', price: 'Rp 200.000' },
+        { name: 'Member Mingguan', price: 'Rp 30.000' },
+        { name: 'Member Bulanan', price: 'Rp 150.000' }
+      ],
+      ml: [
+        { name: '86 Diamond', price: 'Rp 20.000' },
+        { name: '172 Diamond', price: 'Rp 40.000' },
+        { name: '257 Diamond', price: 'Rp 60.000' },
+        { name: '344 Diamond', price: 'Rp 80.000' },
+        { name: '514 Diamond', price: 'Rp 120.000' },
+        { name: '706 Diamond', price: 'Rp 160.000' },
+        { name: 'Weekly Diamond Pass', price: 'Rp 28.000' },
+        { name: '2195 Diamond', price: 'Rp 500.000' }
+      ]
+    };
+
+    let selectedGame = 'ff';
+    let selectedItem = null;
+    let selectedPaymentMethod = null;
+
+    // Load paket diamond saat pertama kali dimuat
+    renderDiamonds('ff');
+
+    function selectGame(game, element) {
+      selectedGame = game;
+      selectedItem = null; // reset item saat ganti game
+      
+      // Update tampilan tombol aktif
+      document.querySelectorAll('.game-card').forEach(card => card.classList.remove('active'));
+      element.classList.add('active');
+
+      // Tampilkan/sembunyikan input Zone ID jika Mobile Legends
+      const zoneContainer = document.getElementById('zoneIdContainer');
+      if (game === 'ml') {
+        zoneContainer.style.display = 'block';
+      } else {
+        zoneContainer.style.display = 'none';
+      }
+
+      renderDiamonds(game);
+    }
+
+    function renderDiamonds(game) {
+      const container = document.getElementById('diamondList');
+      container.innerHTML = '';
+
+      packages[game].forEach(pkg => {
+        const card = document.createElement('div');
+        card.className = 'diamond-card';
+        card.onclick = () => selectItem(pkg, card);
+        card.innerHTML = `
+          <i class="fa-solid fa-gem"></i>
+          <span class="diamond-amount">${pkg.name}</span>
+          <div class="diamond-price">${pkg.price}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function selectItem(pkg, element) {
+      selectedItem = pkg;
+      document.querySelectorAll('.diamond-card').forEach(card => card.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+
+    function selectPayment(method, element) {
+      selectedPaymentMethod = method;
+      document.querySelectorAll('.payment-card').forEach(card => card.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+
+    function processOrder() {
+      const userId = document.getElementById('userId').value.trim();
+      const zoneId = document.getElementById('zoneId').value.trim();
+
+      if (!userId) {
+        alert('Harap masukkan User ID kamu terlebih dahulu!');
+        return;
+      }
+
+      if (selectedGame === 'ml' && !zoneId) {
+        alert('Harap masukkan Zone ID Mobile Legends kamu!');
+        return;
+      }
+
+      if (!selectedItem) {
+        alert('Harap pilih nominal diamond yang ingin dibeli!');
+        return;
+      }
+
+      if (!selectedPaymentMethod) {
+        alert('Harap pilih metode pembayaran!');
+        return;
+      }
+
+      // Tampilkan detail ringkasan ke Modal Konfirmasi
+      const gameTitle = selectedGame === 'ff' ? 'Free Fire' : 'Mobile Legends';
+      const idInfo = selectedGame === 'ml' ? `${userId} (${zoneId})` : userId;
+
+      const summary = `
+        <strong>Game:</strong> ${gameTitle}<br>
+        <strong>User ID:</strong> ${idInfo}<br>
+        <strong>Item:</strong> ${selectedItem.name}<br>
+        <strong>Harga:</strong> ${selectedItem.price}<br>
+        <strong>Pembayaran:</strong> ${selectedPaymentMethod}
+      `;
+
+      document.getElementById('modalText').innerHTML = summary;
+      document.getElementById('orderModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('orderModal').style.display = 'none';
+    }
+
+    function redirectToWhatsApp() {
+      const userId = document.getElementById('userId').value.trim();
+      const zoneId = document.getElementById('zoneId').value.trim();
+      const gameTitle = selectedGame === 'ff' ? 'Free Fire' : 'Mobile Legends';
+      const idInfo = selectedGame === 'ml' ? `${userId} (${zoneId})` : userId;
+
+      const message = `Halo FARIEX STORE, saya mau order top up diamond:\n\n` +
+        `• *Game:* ${gameTitle}\n` +
+        `• *ID Player:* ${idInfo}\n` +
+        `• *Paket:* ${selectedItem.name}\n` +
+        `• *Harga:* ${selectedItem.price}\n` +
+        `• *Metode Bayar:* ${selectedPaymentMethod}\n\n` +
+        `Mohon diproses, terima kasih!`;
+
+      const targetPhoneNumber = "6287879491224";
+      const encodedMsg = encodeURIComponent(message);
+      
+      // Buka aplikasi WhatsApp
+      window.open(`https://wa.me/${targetPhoneNumber}?text=${encodedMsg}`, '_blank');
+      closeModal();
+    }
+  </script>
+</body>
+  </html>
