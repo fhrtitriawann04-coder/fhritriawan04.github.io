@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Ulang Tahun Spesial</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins & Great Vibes -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        great: ['Great Vibes', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 6s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-100 via-purple-100 to-indigo-100 text-gray-800 min-h-screen relative">
+
+    <!-- Music Player Floating Button -->
+    <div id="music-control" onclick="toggleMusic()" class="fixed bottom-5 right-5 z-40 bg-pink-600 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-transform transform hover:scale-110 active:scale-95 border-2 border-white">
+        <i id="music-icon" class="fa-solid fa-music text-lg"></i>
+    </div>
+
+    <!-- 1. Halaman Pembuka / Cover -->
+    <section id="cover-section" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-tr from-pink-500 via-purple-500 to-indigo-600 text-white p-6 text-center transition-all duration-700">
+        <div class="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
+            <div class="absolute top-10 left-10 text-4xl animate-float">🎈</div>
+            <div class="absolute bottom-20 right-16 text-4xl animate-float" style="animation-delay: 1s;">🎉</div>
+            <div class="absolute top-1/3 right-10 text-3xl animate-float" style="animation-delay: 2s;">✨</div>
+            <div class="absolute bottom-1/4 left-16 text-3xl animate-float" style="animation-delay: 1.5s;">🍰</div>
+        </div>
+
+        <div class="relative z-10 max-w-md w-full glass p-8 rounded-3xl shadow-2xl text-gray-800 border border-white/50">
+            <span class="text-xs font-semibold uppercase tracking-widest text-pink-600 bg-pink-100 px-3 py-1 rounded-full">Undangan Spesial</span>
+            <h1 class="font-great text-5xl md:text-6xl text-pink-600 mt-3 mb-1">You're Invited!</h1>
+            <p class="text-gray-600 text-xs mb-5">Merayakan Hari Bahagia Ulang Tahun</p>
+
+            <!-- Editable Name on Cover -->
+            <div class="mb-5">
+                <input type="text" id="cover-name" value="Keisha Aurelia" class="w-full text-center font-bold text-2xl text-gray-800 bg-transparent border-b-2 border-pink-400 focus:outline-none focus:border-pink-600 pb-1" placeholder="Nama yang ulang tahun">
+                <span class="text-[10px] text-gray-400 mt-1 block">💡 (Nama bisa diketik & diubah langsung)</span>
+            </div>
+
+            <!-- Cover Photo with Uploader & Cake Illustration Fallback -->
+            <div class="relative w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden shadow-lg border-4 border-white group bg-pink-100 flex items-center justify-center">
+                <img id="cover-photo-preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Birthday Person" class="w-full h-full object-cover">
+                <label for="cover-file-input" class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-white text-xs font-medium p-2">
+                    <i class="fa-solid fa-camera text-lg mb-1"></i> Ganti Foto
+                </label>
+                <input type="file" id="cover-file-input" accept="image/*" class="hidden" onchange="updateCoverPhoto(event)">
+            </div>
+            
+            <div class="flex justify-center gap-2 mb-5">
+                <button onclick="resetToCakeIllustration()" class="text-[11px] bg-purple-100 hover:bg-purple-200 text-purple-700 px-3 py-1 rounded-full font-medium transition-all flex items-center gap-1">
+                    <i class="fa-solid fa-cake-candles"></i> Pakai Ilustrasi Kue
+                </button>
+            </div>
+
+            <p class="text-gray-600 text-xs mb-5 italic">"Sebuah kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir."</p>
+
+            <button onclick="openInvitation()" class="w-full py-3 px-6 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold rounded-full shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <div id="main-content" class="hidden opacity-0 transition-opacity duration-1000 max-w-2xl mx-auto px-4 py-8 space-y-10">
+
+        <!-- 2. Profil yang Berulang Tahun -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl text-center relative overflow-hidden border border-white/60">
+            <div class="absolute -top-10 -right-10 text-pink-200 text-9xl opacity-30 font-great pointer-events-none">Birthday</div>
+            
+            <div class="relative w-36 h-36 mx-auto mb-3 rounded-full overflow-hidden shadow-2xl border-4 border-pink-300 group bg-pink-100 flex items-center justify-center">
+                <img id="profile-photo-preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Profile" class="w-full h-full object-cover">
+                <label for="profile-file-input" class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-white text-xs font-semibold p-2">
+                    <i class="fa-solid fa-camera text-xl mb-1"></i> Ganti Foto Galeri
+                </label>
+                <input type="file" id="profile-file-input" accept="image/*" class="hidden" onchange="updateProfilePhoto(event)">
+            </div>
+            <span class="text-xs text-gray-500 block mb-3">✨ (Klik foto di atas untuk ganti dari galeri HP Anda)</span>
+
+            <div class="inline-block bg-pink-100 text-pink-600 px-4 py-1 rounded-full text-sm font-semibold mb-3">
+                Ulang Tahun ke-<span contenteditable="true" id="profile-age" class="outline-none border-b border-pink-400">17</span>
+            </div>
+
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+                <input type="text" id="profile-name" value="Keisha Aurelia Putri" class="w-full text-center bg-transparent font-bold border-b border-dashed border-gray-300 focus:border-pink-500 focus:outline-none">
+            </h2>
+
+            <div class="mt-4 bg-pink-50 p-4 rounded-2xl border border-pink-200">
+                <p class="text-gray-700 italic text-sm" contenteditable="true" id="profile-greeting">
+                    "Terima kasih atas segala doa dan kasih sayang di hari spesialku. Semoga kebahagiaan senantiasa menyertai kita semua!"
+                </p>
+                <span class="text-[10px] text-pink-400 mt-2 block">💡 (Pesan ucapan di atas bisa diklik dan diedit langsung)</span>
+            </div>
+        </section>
+
+        <!-- 5. Countdown Ulang Tahun -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl text-center border border-white/60">
+            <h3 class="text-lg font-bold text-gray-800 mb-1 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-clock text-pink-500"></i> Menuju Hari H
+            </h3>
+            <p class="text-xs text-gray-500 mb-5">Hitung mundur waktu perayaan acara ulang tahun</p>
+
+            <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-md mx-auto">
+                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
+                    <span id="days" class="text-2xl md:text-3xl font-bold block">00</span>
+                    <span class="text-[10px] uppercase tracking-wider">Hari</span>
+                </div>
+                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
+                    <span id="hours" class="text-2xl md:text-3xl font-bold block">00</span>
+                    <span class="text-[10px] uppercase tracking-wider">Jam</span>
+                </div>
+                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
+                    <span id="minutes" class="text-2xl md:text-3xl font-bold block">00</span>
+                    <span class="text-[10px] uppercase tracking-wider">Menit</span>
+                </div>
+                <div class="bg-gradient-to-b from-pink-500 to-purple-600 text-white p-3 rounded-2xl shadow-md">
+                    <span id="seconds" class="text-2xl md:text-3xl font-bold block">00</span>
+                    <span class="text-[10px] uppercase tracking-wider">Detik</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Detail Acara -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
+            <div class="text-center mb-6">
+                <span class="text-xs font-semibold text-purple-600 uppercase tracking-widest bg-purple-100 px-3 py-1 rounded-full">Save The Date</span>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">Detail Acara Perayaan</h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-white/80 p-4 rounded-2xl shadow-sm border border-pink-100 flex items-start gap-3">
+                    <div class="bg-pink-100 text-pink-600 w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Hari & Tanggal</h4>
+                        <input type="text" id="event-date" value="Sabtu, 25 Juli 2026" class="font-bold text-gray-800 text-sm md:text-base w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-pink-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="bg-white/80 p-4 rounded-2xl shadow-sm border border-pink-100 flex items-start gap-3">
+                    <div class="bg-purple-100 text-purple-600 w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Waktu / Jam</h4>
+                        <input type="text" id="event-time" value="16.00 WIB - Selesai" class="font-bold text-gray-800 text-sm md:text-base w-full bg-transparent border-b border-transparent hover:border-gray-300 focus:border-purple-500 focus:outline-none">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/80 p-5 rounded-2xl shadow-sm border border-pink-100 text-center">
+                <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-lg mx-auto mb-2">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <h4 class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Lokasi Acara</h4>
+                <input type="text" id="event-location-name" value="Grand Cafe & Resto, Jl. Melati Indah No. 12, Jakarta" class="font-bold text-gray-800 text-sm md:text-base w-full text-center bg-transparent border-b border-transparent hover:border-gray-300 focus:border-indigo-500 focus:outline-none mb-3">
+                
+                <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="maps-url" value="https://maps.google.com" class="text-xs bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 flex-grow focus:outline-none focus:border-indigo-500" placeholder="Masukkan Link Google Maps">
+                    <a id="maps-btn" href="https://maps.google.com" target="_blank" class="py-2.5 px-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white text-xs font-medium rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-map-location-dot"></i> Buka Maps
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Galeri Foto (Cleaned initial state, ready for custom uploads) -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
+            <div class="text-center mb-6">
+                <span class="text-xs font-semibold text-pink-600 uppercase tracking-widest bg-pink-100 px-3 py-1 rounded-full">Momen Indah</span>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">Galeri Foto</h3>
+                <p class="text-xs text-gray-500 mt-1">Unggah dan tambahkan foto kenangan dari galeri perangkat Anda</p>
+            </div>
+
+            <div class="mb-6 text-center">
+                <label for="gallery-file-input" class="inline-flex items-center gap-2 px-5 py-3 bg-pink-500 hover:bg-pink-600 text-white text-sm font-medium rounded-full shadow-md cursor-pointer transition-all">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Tambah Foto dari Galeri HP
+                </label>
+                <input type="file" id="gallery-file-input" accept="image/*" multiple class="hidden" onchange="addGalleryPhotos(event)">
+            </div>
+
+            <!-- Dynamic Gallery Grid -->
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Foto-foto yang diunggah akan muncul secara otomatis di sini -->
+            </div>
+            <p id="gallery-empty-text" class="text-center text-xs text-gray-400 italic py-6">Belum ada foto yang diunggah. Silakan klik tombol di atas untuk menambah foto dari galeri Anda.</p>
+        </section>
+
+        <!-- Lightbox Modal for Gallery -->
+        <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/80 hidden items-center justify-center p-4" onclick="closeLightbox()">
+            <div class="relative max-w-3xl w-full max-h-[90vh] flex items-center justify-center">
+                <img id="lightbox-img" src="" alt="Zoomed Photo" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl object-contain">
+                <button class="absolute top-2 right-2 text-white bg-black/50 hover:bg-black w-10 h-10 rounded-full flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 6. RSVP / Konfirmasi Kehadiran -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
+            <div class="text-center mb-6">
+                <span class="text-xs font-semibold text-purple-600 uppercase tracking-widest bg-purple-100 px-3 py-1 rounded-full">RSVP</span>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">Konfirmasi Kehadiran</h3>
+                <p class="text-xs text-gray-500 mt-1">Mohon konfirmasi kehadiran Anda untuk kelancaran acara</p>
+            </div>
+
+            <form id="rsvp-form" onsubmit="submitRSVP(event)" class="space-y-4 max-w-md mx-auto">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nama Tamu Undangan</label>
+                    <input type="text" id="rsvp-name" required placeholder="Masukkan nama Anda" class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Status Kehadiran</label>
+                    <select id="rsvp-status" class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500">
+                        <option value="Hadir">Hadir (Datang ke Acara)</option>
+                        <option value="Tidak Hadir">Mohon Maaf, Berhalangan Hadir</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Jumlah Tamu (Bebas / Tidak Terbatas)</label>
+                    <input type="number" id="rsvp-count" min="1" max="100" value="1" class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500" placeholder="Masukkan jumlah tamu">
+                    <span class="text-[10px] text-gray-400 mt-1 block">💡 Ketik jumlah tamu yang akan hadir sesuai kebutuhan Anda</span>
+                </div>
+
+                <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                    <button type="submit" class="flex-1 py-3 px-6 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                        <i class="fa-solid fa-floppy-disk"></i> Simpan RSVP
+                    </button>
+                    <button type="button" onclick="sendRSVPWhatsApp()" class="flex-1 py-3 px-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Kirim via WA
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- 7. Ucapan dan Doa (Guestbook - Fully dynamic & clean initial state) -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl border border-white/60">
+            <div class="text-center mb-6">
+                <span class="text-xs font-semibold text-pink-600 uppercase tracking-widest bg-pink-100 px-3 py-1 rounded-full">Ucapan & Doa</span>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">Buku Tamu Ucapan</h3>
+                <p class="text-xs text-gray-500 mt-1">Tuliskan pesan, doa, dan harapan untuk yang ulang tahun</p>
+            </div>
+
+            <form id="wishes-form" onsubmit="submitWish(event)" class="space-y-4 max-w-md mx-auto mb-6">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nama Anda / Pengirim</label>
+                    <input type="text" id="wish-name" required placeholder="Contoh: Budi & Keluarga" class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-pink-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Pesan & Doa</label>
+                    <textarea id="wish-message" required rows="3" placeholder="Tulis doa terbaikmu di sini..." class="w-full bg-white/90 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-pink-500"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 px-6 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-paper-plane"></i> Kirim Ucapan & Doa
+                </button>
+            </form>
+
+            <!-- Container List Ucapan (Starts completely empty) -->
+            <div id="wishes-container" class="space-y-3 max-h-80 overflow-y-auto pr-1">
+                <!-- Ucapan baru yang dikirim tamu akan muncul di sini secara dinamis -->
+            </div>
+            <p id="wishes-empty-text" class="text-center text-xs text-gray-400 italic py-4">Belum ada ucapan. Jadilah yang pertama memberikan doa!</p>
+        </section>
+
+        <!-- 8. Penutup & Share -->
+        <section class="glass rounded-3xl p-6 md:p-8 shadow-xl text-center border border-white/60 space-y-4">
+            <h3 class="font-great text-4xl text-pink-600">Thank You for Coming</h3>
+            <p class="text-gray-600 text-sm max-w-md mx-auto">
+                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir untuk memberikan doa restu.
+            </p>
+
+            <div class="pt-2">
+                <h4 id="closing-name" class="font-bold text-xl text-gray-800">Keisha Aurelia Putri</h4>
+                <p class="text-xs text-gray-400">Segenap Keluarga Besar</p>
+            </div>
+
+            <div class="pt-4 border-t border-gray-200 flex flex-col sm:flex-row gap-3 justify-center">
+                <button onclick="shareInvitation()" class="py-3 px-6 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-share-nodes"></i> Bagikan Undangan
+                </button>
+                <button onclick="copyInvitationLink()" class="py-3 px-6 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-link"></i> Salin Link Undangan
+                </button>
+            </div>
+        </section>
+
+        <footer class="text-center text-xs text-gray-500 pb-6">
+            <p>Digital Birthday Invitation Template &copy; 2026. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Functionality -->
+    <script>
+        // Web Audio API Synthesizer & Music Box for Birthday Tune
+        let isPlaying = false;
+        let audioCtx = null;
+        let musicTimer = null;
+
+        // Happy Birthday melody notes (frequencies in Hz)
+        const notes = [
+            { f: 261.63, dur: 0.3 }, { f: 261.63, dur: 0.15 }, { f: 293.66, dur: 0.5 }, { f: 261.63, dur: 0.5 }, { f: 349.23, dur: 0.5 }, { f: 329.63, dur: 1.0 },
+            { f: 261.63, dur: 0.3 }, { f: 261.63, dur: 0.15 }, { f: 293.66, dur: 0.5 }, { f: 261.63, dur: 0.5 }, { f: 392.00, dur: 0.5 }, { f: 349.23, dur: 1.0 },
+            { f: 261.63, dur: 0.3 }, { f: 261.63, dur: 0.15 }, { f: 523.25, dur: 0.5 }, { f: 440.00, dur: 0.5 }, { f: 349.23, dur: 0.5 }, { f: 329.63, dur: 0.5 }, { f: 293.66, dur: 1.0 },
+            { f: 466.16, dur: 0.3 }, { f: 466.16, dur: 0.15 }, { f: 440.00, dur: 0.5 }, { f: 349.23, dur: 0.5 }, { f: 392.00, dur: 0.5 }, { f: 349.23, dur: 1.2 }
+        ];
+
+        function playNote(freq, duration) {
+            if (!audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function playMelodyLoop() {
+            if (!isPlaying) return;
+            let totalTime = 0;
+            notes.forEach((note) => {
+                setTimeout(() => {
+                    if (isPlaying) playNote(note.f, note.dur);
+                }, totalTime * 1000);
+                totalTime += note.dur + 0.05;
+            });
+
+            musicTimer = setTimeout(() => {
+                if (isPlaying) playMelodyLoop();
+            }, totalTime * 1000);
+        }
+
+        function toggleMusic() {
+            const musicIcon = document.getElementById('music-icon');
+            const musicControl = document.getElementById('music-control');
+
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+            }
+
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            if (isPlaying) {
+                isPlaying = false;
+                clearTimeout(musicTimer);
+                musicIcon.className = "fa-solid fa-music text-lg";
+                musicControl.classList.remove('animate-spin-slow');
+            } else {
+                isPlaying = true;
+                playMelodyLoop();
+                musicIcon.className = "fa-solid fa-compact-disc text-lg";
+                musicControl.classList.add('animate-spin-slow');
+            }
+        }
+
+        // Sync Cover Name and Profile Name automatically
+        const coverNameInput = document.getElementById('cover-name');
+        const profileNameInput = document.getElementById('profile-name');
+        const closingNameEl = document.getElementById('closing-name');
+
+        coverNameInput.addEventListener('input', (e) => {
+            profileNameInput.value = e.target.value;
+            closingNameEl.textContent = e.target.value;
+        });
+
+        profileNameInput.addEventListener('input', (e) => {
+            coverNameInput.value = e.target.value;
+            closingNameEl.textContent = e.target.value;
+        });
+
+        // Open Invitation Transition & Auto Play Music
+        function openInvitation() {
+            const cover = document.getElementById('cover-section');
+            const mainContent = document.getElementById('main-content');
+
+            // Start music automatically when opening invitation
+            if (!isPlaying) {
+                try {
+                    if (!audioCtx) {
+                        const AudioContext = window.AudioContext || window.webkitAudioContext;
+                        audioCtx = new AudioContext();
+                    }
+                    if (audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
+                    isPlaying = true;
+                    playMelodyLoop();
+                    document.getElementById('music-icon').className = "fa-solid fa-compact-disc text-lg";
+                    document.getElementById('music-control').classList.add('animate-spin-slow');
+                } catch(e) {}
+            }
+
+            cover.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                cover.style.display = 'none';
+                mainContent.classList.remove('hidden');
+                setTimeout(() => {
+                    mainContent.classList.remove('opacity-0');
+                }, 50);
+            }, 700);
+        }
+
+        // Reset to Cake Illustration SVG / Placeholder
+        function resetToCakeIllustration() {
+            const cakeSvgUrl = "https://placehold.co/400x400/fbcfe8/db2777?text=%F0%9F%8E%82+Kue+Ulang+Tahun";
+            document.getElementById('cover-photo-preview').src = cakeSvgUrl;
+            document.getElementById('profile-photo-preview').src = cakeSvgUrl;
+        }
+
+        // Cover Photo Uploader
+        function updateCoverPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('cover-photo-preview').src = e.target.result;
+                    document.getElementById('profile-photo-preview').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Profile Photo Uploader
+        function updateProfilePhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profile-photo-preview').src = e.target.result;
+                    document.getElementById('cover-photo-preview').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Add Gallery Photos dynamically from device
+        function addGalleryPhotos(event) {
+            const files = event.target.files;
+            const grid = document.getElementById('gallery-grid');
+            const emptyText = document.getElementById('gallery-empty-text');
+            
+            if (files.length > 0 && emptyText) {
+                emptyText.style.display = 'none';
+            }
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const div = document.createElement('div');
+                    div.className = 'relative rounded-2xl overflow-hidden shadow-md group aspect-square cursor-pointer';
+                    div.setAttribute('onclick', `openLightbox('${e.target.result}')`);
+                    div.innerHTML = `
+                        <img src="${e.target.result}" alt="Uploaded Photo" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                        </div>
+                    `;
+                    grid.prepend(div);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Lightbox Functions
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Countdown Timer Logic
+        const targetDate = new Date("July 25, 2026 16:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Sync Google Maps Link Button
+        const mapsUrlInput = document.getElementById('maps-url');
+        const mapsBtn = document.getElementById('maps-btn');
+        mapsUrlInput.addEventListener('input', (e) => {
+            mapsBtn.href = e.target.value;
+        });
+
+        // RSVP Submit
+        function submitRSVP(event) {
+            event.preventDefault();
+            const name = document.getElementById('rsvp-name').value;
+            const status = document.getElementById('rsvp-status').value;
+            const count = document.getElementById('rsvp-count').value;
+
+            const msgBox = document.createElement('div');
+            msgBox.className = 'fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4';
+            msgBox.innerHTML = `
+                <div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center shadow-2xl">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg mb-1">RSVP Berhasil Disimpan!</h4>
+                    <p class="text-gray-600 text-xs mb-4">Terima kasih ${name}, status kehadiran (${status} - ${count} Orang) telah tercatat.</p>
+                    <button onclick="this.closest('.fixed').remove()" class="w-full py-2.5 bg-green-500 hover:bg-green-600 text-white rounded-xl text-sm font-semibold">Tutup</button>
+                </div>
+            `;
+            document.body.appendChild(msgBox);
+        }
+
+        // Send RSVP via WhatsApp (Target: 087879491224)
+        function sendRSVPWhatsApp() {
+            const name = document.getElementById('rsvp-name').value || "Tamu Undangan";
+            const status = document.getElementById('rsvp-status').value;
+            const count = document.getElementById('rsvp-count').value;
+            const birthdayPerson = document.getElementById('profile-name').value;
+
+            const text = `Halo, saya *${name}* ingin melakukan konfirmasi kehadiran untuk acara Ulang Tahun *${birthdayPerson}*.\n\nStatus: *${status}*\nJumlah Tamu: *${count} Orang*\n\nTerima kasih!`;
+            const encodedText = encodeURIComponent(text);
+            const waUrl = `https://wa.me/6287879491224?text=${encodedText}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // Wishes Guestbook with LocalStorage (Starts completely empty)
+        let wishesList = JSON.parse(localStorage.getItem('birthday_wishes')) || [];
+
+        function renderWishes() {
+            const container = document.getElementById('wishes-container');
+            const emptyText = document.getElementById('wishes-empty-text');
+            container.innerHTML = '';
+
+            if (wishesList.length > 0) {
+                if (emptyText) emptyText.style.display = 'none';
+                wishesList.forEach(wish => {
+                    const div = document.createElement('div');
+                    div.className = 'bg-white/80 p-4 rounded-2xl shadow-sm border border-pink-100';
+                    div.innerHTML = `
+                        <div class="flex justify-between items-center mb-1">
+                            <h5 class="font-bold text-gray-800 text-sm"><i class="fa-solid fa-user-circle text-pink-500 mr-1"></i> ${escapeHtml(wish.name)}</h5>
+                            <span class="text-[10px] text-gray-400">${escapeHtml(wish.date)}</span>
+                        </div>
+                        <p class="text-gray-600 text-xs md:text-sm pl-5">${escapeHtml(wish.message)}</p>
+                    `;
+                    container.appendChild(div);
+                });
+            } else {
+                if (emptyText) emptyText.style.display = 'block';
+            }
+        }
+
+        function submitWish(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('wish-name');
+            const messageInput = document.getElementById('wish-message');
+
+            const newWish = {
+                name: nameInput.value,
+                message: messageInput.value,
+                date: "Baru saja"
+            };
+
+            wishesList.unshift(newWish);
+            localStorage.setItem('birthday_wishes', JSON.stringify(wishesList));
+            renderWishes();
+
+            nameInput.value = '';
+            messageInput.value = '';
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
+        renderWishes();
+
+        // Share Invitation
+        function shareInvitation() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Undangan Ulang Tahun ' + document.getElementById('profile-name').value,
+                    text: 'Kamu diundang ke acara ulang tahun! Silakan buka tautan berikut.',
+                    url: window.location.href,
+                }).catch(() => {});
+            } else {
+                copyInvitationLink();
+            }
+        }
+
+        // Copy Invitation Link
+        function copyInvitationLink() {
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            
+            const msgBox = document.createElement('div');
+            msgBox.className = 'fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4';
+            msgBox.innerHTML = `
+                <div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center shadow-2xl">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg mb-1">Link Berhasil Disalin!</h4>
+                    <p class="text-gray-600 text-xs mb-4">Tautan undangan telah disalin ke clipboard Anda.</p>
+                    <button onclick="this.closest('.fixed').remove()" class="w-full py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl text-sm font-semibold">Tutup</button>
+                </div>
+            `;
+            document.body.appendChild(msgBox);
+        }
+    </script>
+</body>
+</html>
